@@ -1,0 +1,1444 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>北九州自驾 11 天 · 2026.12.10–12.20</title>
+<meta name="description" content="福冈 · 熊本 · 别府 · 由布院 · 阿苏 · 长崎 自驾旅行手册：行程、地图、导航、贴士">
+<meta name="theme-color" content="#F7F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#13161B" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♨️</text></svg>">
+<style>
+:root{
+  --bg:#F7F5F0; --bg2:#FDFCF9; --card:#FFFFFF;
+  --ink:#24262B; --ink2:#5F636B; --ink3:#949AA3;
+  --line:#E2DED5; --line2:#EEEBE4;
+  --accent:#B5452E; --accent-soft:#FAEBE6;
+  --warn:#AE6F12; --warn-soft:#FBF1DE;
+  --bad:#B3261E; --bad-soft:#FCE9E7;
+  --ok:#2C7A57; --ok-soft:#E7F4EE;
+  --sea:#E4EDF2; --land:#FBF8F1; --paper:#F7F5F0;
+  --d1:#C0563A; --d2:#C97B2E; --d3:#9E8214; --d4:#5E8F2F; --d5:#2E8C6A; --d6:#1F8794;
+  --d7:#2F72B0; --d8:#5B57B0; --d9:#8E4A9E; --d10:#B94B77; --d11:#5F7180;
+  --shadow:0 1px 2px rgba(40,40,50,.06),0 8px 24px -12px rgba(40,40,50,.20);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#13161B; --bg2:#191D23; --card:#1C2129;
+    --ink:#E8E6E1; --ink2:#A6A9AE; --ink3:#7B7F86;
+    --line:#2D333C; --line2:#232830;
+    --accent:#EE8567; --accent-soft:#2E211D;
+    --warn:#E0B15C; --warn-soft:#2C2519;
+    --bad:#F28B82; --bad-soft:#33201F;
+    --ok:#6FC49B; --ok-soft:#16261F;
+    --sea:#18222D; --land:#1F242C; --paper:#13161B;
+    --d1:#F08469; --d2:#EFA95C; --d3:#D9BC44; --d4:#9BCB63; --d5:#5BC79E; --d6:#4FC2CF;
+    --d7:#6BAAE8; --d8:#9490EC; --d9:#C77FD6; --d10:#EC84AC; --d11:#9BAEBE;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.7);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Noto Sans SC","Noto Sans CJK SC","Microsoft YaHei","Hiragino Sans","Noto Sans JP",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:15px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+a{color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+
+/* ---------- top bar ---------- */
+.bar{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:saturate(1.4) blur(12px);
+  -webkit-backdrop-filter:saturate(1.4) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.bar-now{
+  max-width:820px;margin:0 auto;padding:6px 16px 0;font-size:11.5px;color:var(--ink2);
+  display:flex;gap:8px;align-items:baseline;white-space:nowrap;overflow:hidden;
+}
+.bar-now b{color:var(--accent);font-variant-numeric:tabular-nums;font-weight:700}
+.bar-now span{overflow:hidden;text-overflow:ellipsis}
+.tabs{
+  max-width:820px;margin:0 auto;display:flex;gap:6px;align-items:center;
+  padding:7px 16px 8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;
+  border:1px solid var(--line);background:var(--bg2);color:var(--ink2);
+  white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  display:inline-flex;align-items:center;gap:5px;font-family:inherit;
+}
+.tab:active{transform:scale(.96)}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme: dark){.tab[aria-selected="true"]{color:#13161B}}
+.tab .cnt{font-size:10px;font-weight:800;background:var(--bad);color:#fff;border-radius:999px;padding:0 6px;line-height:16px}
+@media (prefers-color-scheme: dark){.tab .cnt{color:#13161B}}
+
+.panel{display:none;margin:16px 0 0}
+.panel.on{display:block}
+
+.dpick{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.dp{
+  font-size:12.5px;font-weight:700;padding:6px 10px;border-radius:11px;cursor:pointer;
+  border:1px solid var(--line);background:var(--bg2);color:var(--ink2);
+  font-variant-numeric:tabular-nums;-webkit-tap-highlight-color:transparent;
+  display:inline-flex;flex-direction:column;align-items:center;line-height:1.2;min-width:52px;font-family:inherit;
+}
+.dp small{font-size:9.5px;font-weight:600;color:var(--ink3);margin-top:2px}
+.dp[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff}
+.dp[aria-pressed="true"] small{color:rgba(255,255,255,.82)}
+@media (prefers-color-scheme: dark){
+  .dp[aria-pressed="true"]{color:#13161B}
+  .dp[aria-pressed="true"] small{color:rgba(19,22,27,.72)}
+}
+article.day{display:none}
+article.day.on{display:block}
+.dnav{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.dnav a{
+  font-size:12.5px;font-weight:600;color:var(--ink2);text-decoration:none;
+  border:1px solid var(--line);background:var(--bg2);border-radius:10px;padding:7px 12px;
+}
+.dnav a.hid{visibility:hidden}
+
+/* ---------- hero / now ---------- */
+header.hero{padding:14px 0 2px}
+h1{font-size:21px;line-height:1.3;margin:0 0 2px;letter-spacing:-.01em}
+.sub{color:var(--ink3);font-size:12.5px;margin:0}
+
+.now{
+  margin:12px 0 4px;padding:14px;border-radius:16px;
+  background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);
+  position:relative;overflow:hidden;
+}
+.now::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--accent)}
+.now-h{display:flex;align-items:center;gap:7px;font-size:12px;letter-spacing:.12em;color:var(--accent);font-weight:700;text-transform:uppercase}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:p 2s ease-in-out infinite}
+@keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
+.now-title{font-size:17px;font-weight:700;margin:7px 0 2px;line-height:1.35}
+.now-when{font-size:13px;color:var(--ink2)}
+.now-when b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.cd{display:flex;gap:5px;margin-top:11px}
+.cd div{
+  flex:1;text-align:center;padding:7px 4px 6px;border-radius:11px;
+  background:var(--bg);border:1px solid var(--line2);
+}
+.cd span{display:block;font-size:23px;font-weight:700;line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.cd small{display:block;font-size:10px;color:var(--ink3);letter-spacing:.1em;margin-top:3px}
+@media(min-width:520px){.cd span{font-size:34px}}
+.tzline{margin-top:10px;font-size:12px;color:var(--ink3);display:flex;flex-wrap:wrap;gap:4px 10px}
+.tzline b{font-weight:600;color:var(--ink2)}
+
+/* ---------- section ---------- */
+section{margin:0}
+h2{font-size:16px;margin:0 0 3px;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.sec-note{color:var(--ink2);font-size:13px;margin:0 0 14px}
+
+/* ---------- map ---------- */
+.mapbox{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:10px 8px 4px;box-shadow:var(--shadow);overflow:hidden}
+.mapbox svg{display:block;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.lg{
+  font-size:11.5px;padding:4px 9px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line);background:var(--bg2);color:var(--ink2);
+  display:inline-flex;align-items:center;gap:5px;font-variant-numeric:tabular-nums;
+  -webkit-tap-highlight-color:transparent;font-family:inherit;
+}
+.lg i{width:9px;height:9px;border-radius:50%;background:var(--c);display:inline-block}
+.lg[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff}
+@media (prefers-color-scheme: dark){.lg[aria-pressed="true"]{color:#13161B}}
+.lg[aria-pressed="true"] i{background:currentColor}
+#mapRoutes g.dim{opacity:.08}
+.mp-lab{font-size:12px;fill:var(--ink);font-weight:700;paint-order:stroke;stroke:var(--land);stroke-width:3.6px;stroke-linejoin:round}
+.mp-lab-s{font-size:10.5px;fill:var(--ink3)}
+.mp-sea{font-size:12px;fill:var(--ink3);letter-spacing:.3em;opacity:.85}
+.mp-bed{font-size:13px}
+.mp-n{font-size:10.5px;fill:var(--ink2);font-weight:700;paint-order:stroke;stroke:var(--land);stroke-width:3px}
+.mapnote{font-size:11.5px;color:var(--ink3);margin:8px 4px 6px}
+.mscroll{overflow:auto;-webkit-overflow-scrolling:touch;border-radius:12px;overscroll-behavior:contain}
+.mscroll svg{width:calc(100% * var(--z,1))}
+.mz{display:flex;gap:4px;align-items:center;justify-content:flex-end;margin:0 2px 8px;font-size:11.5px;color:var(--ink3)}
+.mz span{margin-right:4px}
+.mz button{font-size:12px;padding:3px 10px;border-radius:9px;cursor:pointer;font-weight:700;border:1px solid var(--line);background:var(--bg2);color:var(--ink2);font-family:inherit;-webkit-tap-highlight-color:transparent}
+.mz button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--card)}
+@media (max-width:600px){
+  .mp-lab{font-size:21px;stroke-width:5px}
+  .mp-n{font-size:17px;stroke-width:4px}
+  .mp-bed{font-size:19px}
+  .mp-sea{font-size:17px}
+  .mp-lab-s{font-size:15px}
+}
+
+/* ---------- cards ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 15px;box-shadow:var(--shadow);margin-bottom:10px}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card-t{font-weight:700;font-size:15px;line-height:1.4}
+.card-k{font-size:11px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin-top:9px;font-size:13.5px}
+.kv dt{color:var(--ink3);white-space:nowrap}
+.kv dd{margin:0;color:var(--ink);min-width:0;overflow-wrap:anywhere}
+.kv dd b{font-variant-numeric:tabular-nums}
+.flightrow{display:flex;align-items:center;gap:10px;margin-top:10px}
+.fp{flex:1;min-width:0}
+.fp .code{font-size:22px;font-weight:700;letter-spacing:.02em;line-height:1}
+.fp .tm{font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px}
+.fp .tm small{font-size:10.5px;color:var(--ink3);font-weight:600;margin-left:3px}
+.fp .pl{font-size:11.5px;color:var(--ink3);margin-top:1px;line-height:1.35}
+.fp.r{text-align:right}
+.fmid{flex:0 0 auto;text-align:center;color:var(--ink3);font-size:10.5px;min-width:64px}
+.fmid .ln{height:1px;background:var(--line);margin:5px 0;position:relative}
+.fmid .ln::after{content:"✈";position:absolute;right:-2px;top:-8px;font-size:11px;color:var(--ink3)}
+.legsep{border-top:1px dashed var(--line);margin:12px 0 2px;padding-top:8px;font-size:11.5px;color:var(--ink3);text-align:center}
+
+/* ---------- badges & links ---------- */
+.b{display:inline-block;font-size:10.5px;font-weight:700;padding:1.5px 7px;border-radius:999px;letter-spacing:.03em;vertical-align:1px;white-space:nowrap}
+.b-book{background:var(--accent-soft);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+.b-ok{background:var(--ok-soft);color:var(--ok);border:1px solid color-mix(in srgb,var(--ok) 30%,transparent)}
+.b-must{background:var(--warn-soft);color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 32%,transparent)}
+.b-bad{background:var(--bad-soft);color:var(--bad);border:1px solid color-mix(in srgb,var(--bad) 30%,transparent)}
+.b-cash{background:var(--bg);color:var(--ink2);border:1px solid var(--line)}
+
+.nav{
+  display:inline-flex;align-items:center;gap:4px;
+  color:var(--accent);text-decoration:none;font-weight:600;
+  border-bottom:1px dashed color-mix(in srgb,var(--accent) 45%,transparent);
+  -webkit-tap-highlight-color:transparent;
+}
+.nav::after{content:"➜";font-size:10px;transform:rotate(-45deg);display:inline-block;opacity:.75}
+.nav:active{opacity:.6}
+.tel{color:var(--ink);text-decoration:none;border-bottom:1px dashed var(--line);font-variant-numeric:tabular-nums}
+
+/* ---------- day ---------- */
+.day{border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.day-h{display:flex;gap:12px;align-items:flex-start;padding:14px 15px 12px;border-left:4px solid var(--c)}
+.day-n{flex:0 0 auto;width:46px;text-align:center}
+.day-n .dd{font-size:19px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;color:var(--c)}
+.day-n .dw{font-size:10.5px;color:var(--ink3);margin-top:3px}
+.day-n .dn{font-size:9.5px;color:var(--ink3);letter-spacing:.06em;margin-top:2px}
+.day-t{flex:1;min-width:0}
+.day-t h3{margin:0;font-size:15.5px;line-height:1.4;font-weight:700}
+.day-t p{margin:2px 0 0;font-size:12.5px;color:var(--ink2)}
+.day-sleep{margin-top:7px;font-size:12px;color:var(--ink2);display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.day-drive{margin-top:4px;font-size:12px;color:var(--ink2)}
+.day-drive b{font-variant-numeric:tabular-nums}
+
+.routebtns{display:flex;gap:7px;flex-wrap:wrap;padding:0 15px 12px 15px}
+.rb{
+  font-size:12px;padding:6px 11px;border-radius:10px;cursor:pointer;
+  border:1px solid var(--line);background:var(--bg2);color:var(--ink);
+  text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:600;
+  -webkit-tap-highlight-color:transparent;font-family:inherit;
+}
+.rb.primary{background:var(--c);border-color:var(--c);color:#fff}
+@media (prefers-color-scheme: dark){.rb.primary{color:#13161B}}
+.rb:active{transform:scale(.97)}
+
+.routemap{display:none;padding:0 15px 14px}
+.routemap.open{display:block}
+.rmwrap{border:1px dashed var(--line);border-radius:14px;background:var(--bg);padding:8px 8px 10px}
+.rmwrap svg{display:block;width:100%;height:auto}
+.rm-lab{font-size:11px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:3.4px;stroke-linejoin:round}
+.rm-num{font-size:9.5px;font-weight:800;fill:#fff}
+@media (prefers-color-scheme: dark){.rm-num{fill:#13161B}}
+.strip{margin-top:8px;overflow-x:auto;scrollbar-width:thin}
+.strip-in{display:flex;align-items:stretch;gap:0;min-width:min-content}
+.stop{flex:0 0 auto;max-width:112px;text-align:center;padding:0 2px}
+.stop .dot{width:18px;height:18px;border-radius:50%;background:var(--c);margin:2px auto 0;color:#fff;font-size:10px;font-weight:800;line-height:18px}
+@media (prefers-color-scheme: dark){.stop .dot{color:#13161B}}
+.stop .nm{font-size:11px;line-height:1.35;margin-top:5px;color:var(--ink);font-weight:600;word-break:break-word}
+.link{flex:0 0 auto;width:22px;display:flex;align-items:flex-start;padding-top:10px}
+.link i{display:block;width:100%;height:2px;border-radius:2px;background:repeating-linear-gradient(90deg,var(--c) 0 5px,transparent 5px 9px);opacity:.6}
+
+/* ---------- timeline ---------- */
+ol.tl{list-style:none;margin:0;padding:0 15px 14px}
+ol.tl>li{display:grid;grid-template-columns:52px 1fr;gap:0 11px;position:relative;padding-bottom:14px}
+ol.tl>li:last-child{padding-bottom:4px}
+ol.tl>li::before{content:"";position:absolute;left:66px;top:20px;bottom:-3px;width:1px;background:var(--line)}
+ol.tl>li:last-child::before{display:none}
+.t{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink2);text-align:right;padding-top:1px;letter-spacing:-.01em;line-height:1.35}
+.t.free{font-weight:600;color:var(--ink3);font-size:11.5px}
+.t em{font-style:normal;font-size:9.5px;color:var(--ink3);font-weight:600;display:block}
+.body{position:relative;padding-left:14px;min-width:0}
+.body::before{content:"";position:absolute;left:-1px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--card);border:2px solid var(--c)}
+li.hi .body::before{background:var(--c)}
+.nm2{font-size:14px;line-height:1.5;font-weight:600}
+.meta{font-size:12.5px;color:var(--ink2);line-height:1.6;margin-top:2px}
+.meta em{font-style:normal;color:var(--ink3)}
+.hours{font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.drv{display:inline-block;margin-top:3px;font-size:11.5px;color:var(--ink2);background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:1px 8px;font-variant-numeric:tabular-nums}
+.tip{margin-top:5px;font-size:12.5px;line-height:1.55;border-left:2px solid var(--line);padding:1px 0 1px 9px;color:var(--ink2)}
+.tip.w{border-color:var(--warn);background:var(--warn-soft);border-radius:0 8px 8px 0;padding:5px 9px;color:var(--ink)}
+.tip.g{border-color:var(--ok);background:var(--ok-soft);border-radius:0 8px 8px 0;padding:5px 9px;color:var(--ink)}
+.tip.x{border-color:var(--bad);background:var(--bad-soft);border-radius:0 8px 8px 0;padding:5px 9px;color:var(--ink)}
+
+/* ---------- lists ---------- */
+.grp{margin-bottom:16px}
+.grp:last-child{margin-bottom:2px}
+.grp h4{margin:0 0 7px;font-size:13px;color:var(--ink2);letter-spacing:.02em;display:flex;align-items:center;gap:7px}
+.grp h4::after{content:"";flex:1;height:1px;background:var(--line)}
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{position:relative;padding:6px 0 6px 20px;font-size:13.5px;line-height:1.6;border-bottom:1px solid var(--line2)}
+ul.plain li:last-child{border-bottom:0}
+ul.plain li::before{content:"";position:absolute;left:5px;top:15px;width:5px;height:5px;border-radius:50%;background:var(--ink3)}
+ul.plain li b{font-weight:700}
+
+table.bt{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+table.bt th,table.bt td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line2);vertical-align:top}
+table.bt th{color:var(--ink3);font-weight:600;font-size:11.5px;letter-spacing:.04em}
+table.bt td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.bt tr.sum td{border-top:2px solid var(--line);border-bottom:0;font-weight:700}
+table.bt td:first-child,table.bt th:first-child{white-space:nowrap;padding-left:0}
+table.bt td:last-child,table.bt th:last-child{font-size:12px;color:var(--ink2);padding-right:0}
+.tblwrap{overflow-x:auto}
+
+/* ---------- check ---------- */
+.ck{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;padding:10px 0;border-bottom:1px solid var(--line2)}
+.ck:last-child{border-bottom:0;padding-bottom:2px}
+.ck .lv{font-size:15px;line-height:1.4}
+.ck .ct{font-weight:700;font-size:14px;line-height:1.45}
+.ck .cw{grid-column:2;font-size:12.8px;color:var(--ink2);line-height:1.6}
+.ck .cw b{color:var(--ink)}
+.ck .cj{grid-column:2;margin-top:4px}
+.ck .cj a{font-size:11.5px;color:var(--accent);text-decoration:none;font-weight:600}
+.lvkey{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.lvkey span{font-size:11.5px;color:var(--ink2);background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+
+.phone-grid{display:grid;grid-template-columns:1fr;gap:0}
+.phone-grid div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line2);font-size:13.5px}
+.phone-grid div:last-child{border-bottom:0}
+.phone-grid span{color:var(--ink2)}
+.phone-grid a{white-space:nowrap}
+
+.quote{background:var(--bg2);border:1px dashed var(--line);border-radius:12px;padding:11px 13px;margin-top:8px;font-size:14.5px;line-height:1.7}
+.quote small{display:block;font-size:11.5px;color:var(--ink3);margin-bottom:4px;letter-spacing:.04em}
+
+footer{margin:40px 0 28px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);text-align:center;line-height:1.8}
+
+.totop{
+  position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+  background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(10px);
+  color:var(--ink2);font-size:15px;cursor:pointer;box-shadow:var(--shadow);
+  display:none;align-items:center;justify-content:center;
+}
+.totop.show{display:flex}
+@media print{.bar,.totop,.routebtns{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="bar-now" id="barNow"></div>
+  <div class="tabs" id="tabs" role="tablist"></div>
+</nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <h1>北九州自驾 11 天 10 夜</h1>
+  <p class="sub">5 人 · 2026.12.10 – 12.20 · 福冈 → 北九州 → 别府 → 由布院 → 阿苏 → 熊本 → 长崎 → 糸岛 → 福冈</p>
+
+  <div class="now" id="nowCard">
+    <div class="now-h"><span class="pulse"></span><span>此刻关注</span></div>
+    <div class="now-title" id="nowTitle">载入中…</div>
+    <div class="now-when" id="nowWhen"></div>
+    <div class="cd" id="cd">
+      <div><span id="cdD">–</span><small>DAYS 天</small></div>
+      <div><span id="cdH">–</span><small>HRS 时</small></div>
+      <div><span id="cdM">–</span><small>MIN 分</small></div>
+      <div><span id="cdS">–</span><small>SEC 秒</small></div>
+    </div>
+    <div class="tzline" id="tzLine"></div>
+  </div>
+</header>
+
+<section id="map" class="panel" data-tab="map">
+  <h2>行程总览地图</h2>
+  <p class="sec-note">线条是 trip.com 规划的实际开车路线。点下面的日期只看那一天。<span style="white-space:nowrap">🛏 = 住哪、住几晚</span></p>
+  <div class="mapbox">
+    <div class="mz" id="mapZoom"><span>缩放</span><button type="button" data-z="1" aria-pressed="true">1×</button><button type="button" data-z="1.7">1.7×</button><button type="button" data-z="2.5">2.5×</button></div>
+    <div class="mscroll" id="mapScroll">
+    <svg id="ovmap" viewBox="60 0 740 625" role="img" aria-label="北九州自驾路线示意图">
+      <defs>
+        <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="7" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <filter id="rough2" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n2"/>
+          <feDisplacementMap in="SourceGraphic" in2="n2" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <rect x="0" y="0" width="900" height="640" fill="var(--sea)"/>
+      <g id="mapLand"></g>
+      <g id="mapDeco"></g>
+      <g id="mapRoutes" filter="url(#rough2)" fill="none" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="mapNodes"></g>
+    </svg>
+    </div>
+    <p class="mapnote">示意图，海岸线是手绘的，比例只供参考；真正导航请用每个地点的链接。</p>
+    <div class="legend" id="legend"></div>
+  </div>
+</section>
+
+<section id="booked" class="panel" data-tab="booked">
+  <h2>已确认</h2>
+  <p class="sec-note">机票 / 租车 / 酒店 / 门票。时间一律是<b>当地时间</b>：日本 UTC+9，马尼拉与吉隆坡 UTC+8（日本比马来西亚快 1 小时）。确认号、证件号、房号不放在这里。</p>
+  <div id="bookedBox"></div>
+</section>
+
+<section id="days" class="panel" data-tab="days">
+  <h2>逐日行程</h2>
+  <p class="sec-note">一次显示一天。所有地点都能点开 Google 地图导航；每天顶部可以展开当日路线图，或一键打开全天多点导航。<span class="b b-book">需提前订</span> 是要事先预约或买票的。</p>
+  <div class="dpick" id="dpick"></div>
+  <div id="dayBox"></div>
+</section>
+
+<section id="check" class="panel" data-tab="check">
+  <h2>核对 · 冲突与风险</h2>
+  <p class="sec-note">我对照你 trip.com 行程逐项查过：闭馆日、季节性开放、需要预约的、开车时长、当天天黑时间。有问题的我已经在逐日行程里改掉或标出来了，这里是总表。</p>
+  <div class="lvkey"><span>🔴 去不了 / 已改</span><span>🟠 要你处理</span><span>🟡 心里有数</span><span>🟢 查过没问题</span></div>
+  <div id="checkBox"></div>
+</section>
+
+<section id="todo" class="panel" data-tab="todo">
+  <h2>待办清单</h2>
+  <p class="sec-note">照顺序办。办完哪一项跟我说，我把它从这里拿掉。</p>
+  <div class="card" id="todoBox"></div>
+</section>
+
+<section id="tips" class="panel" data-tab="tips">
+  <h2>实用贴士</h2>
+  <p class="sec-note">出门前扫一遍，路上遇到状况回来翻。</p>
+  <div id="tipBox"></div>
+</section>
+
+<footer>
+  北九州自驾 · 2026.12.10 – 12.20 · 5 人<br>
+  行程时间为日本时间（UTC+9）；马尼拉转机与回到吉隆坡那两段另标 UTC+8
+</footer>
+</div>
+
+<button class="totop" id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+/* =========================================================
+   Google Maps 导航链接（自驾为主，默认开车模式）
+   ========================================================= */
+var GQ = function(q){ return encodeURIComponent(q); };
+function navUrl(q, mode){
+  return 'https://www.google.com/maps/dir/?api=1&destination=' + GQ(q) + '&travelmode=' + (mode || 'driving');
+}
+function multiUrl(list){
+  return 'https://www.google.com/maps/dir/' + list.map(GQ).join('/');
+}
+
+/* =========================================================
+   住宿
+   ========================================================= */
+var H = {
+  hkt:{ name:'SG Hotel Kinshai Hakata', q:'SG Hotel Kinshai Hakata 福岡市博多区美野島2-26-30',
+        addr:'福冈市博多区美野岛 2-26-30（812-0017）', tel:'+81-92-292-1015', io:'入住 15:00–02:00 · 退房 11:00 前',
+        park:'停车位资讯不明 —— 出发前问酒店（见待办）', near:'博多站南边，步行约 15 分钟' },
+  bep:{ name:'AMANEK 别府 YULA-RE（アマネク別府ゆらり）', q:'AMANEK別府ゆらり 別府市駅前本町6-35',
+        addr:'大分县别府市站前本町 6-35（874-0934）', tel:'+81-977-76-5566', io:'入住 15:00–24:00 · 退房 11:00 前',
+        park:'外部合作停车场，约 ¥600／日', near:'别府站前，别府塔、竹瓦温泉步行可到' },
+  yuf:{ name:'Rakuten STAY VILLA 由布院温泉', q:'Rakuten STAY VILLA 湯布院温泉 由布市湯布院町川北899-35',
+        addr:'大分县由布市汤布院町川北 899-35（879-5114）', tel:'+81-50-1750-9719', io:'入住 15:00 起（自助入住，房门密码事先寄来）· 退房 10:00 前',
+        park:'有免费停车位，数量有限', near:'汤之坪街道开车约 7 分钟' },
+  aso:{ name:'亀の井ホテル 阿苏（KAMENOI HOTEL ASO）', q:'亀の井ホテル 阿蘇 阿蘇市一の宮町宮地5936',
+        addr:'熊本县阿苏市一之宫町宫地 5936（869-2612）', tel:'+81-967-22-1122', io:'<b>入住 15:00–18:00</b> · 退房 10:00 前',
+        park:'有停车场（有资料写需提前一天联系，见待办）', near:'阿苏神社开车约 5 分钟' },
+  kum:{ name:'The Blossom Kumamoto', q:'THE BLOSSOM KUMAMOTO 熊本市西区春日3-15-26',
+        addr:'熊本市西区春日 3-15-26（860-0047）· JR 熊本站大楼', tel:'+81-96-327-8763', io:'入住 15:00–24:00 · 退房 11:00 前',
+        park:'有停车场，约 ¥1,000／日（以现场为准）', near:'JR 熊本站直结' },
+  ngs:{ name:'Fav LUX 长崎', q:'Fav LUX 長崎 長崎市松が枝町3-10',
+        addr:'长崎市松之枝町 3-10（850-0921）', tel:'+81-50-1794-5808', io:'入住 15:00–22:00 · 退房 10:00 前',
+        park:'外部停车场约 ¥2,000／日，<b>不能预约</b>', near:'大浦天主堂、哥拉巴园步行 5 分钟；新地中华街步行约 12 分钟' },
+  mar:{ name:'Hotel Marinoa Resort Fukuoka', q:'ホテル マリノアリゾート福岡 福岡市西区小戸2-12-43',
+        addr:'福冈市西区小户 2-12-43（819-0001）', tel:'+81-92-895-5511', io:'入住 15:00–24:00 · 退房 12:00 前',
+        park:'有免费停车场', near:'Marinoa City Outlet 就在隔壁' }
+};
+var APT = '福岡空港 国際線ターミナル';
+
+/* =========================================================
+   逐日数据
+   t  当地时间 HH:MM（默认 JST）· tz 另行指定时区 · nd 跨到隔天
+   q  Google 地图查询（有 q 才能点）· m 交通方式 driving / walking / transit
+   dr 开车距离与时长 · free 弹性时段，不进倒计时
+   ========================================================= */
+var DAYS = [
+{
+  date:'2026-12-10', dow:'周四', c:'--d1',
+  title:'抵达福冈 · 福冈塔夜景 · 中洲屋台',
+  sub:'第一天不开车。落地进城、放行李，晚上看夜景吃屋台。',
+  sleep:{ k:'hkt' }, drive:'今天不开车',
+  route:[{n:'福冈机场', q:APT},{n:'SG Hotel 博多', q:H.hkt.q},{n:'福冈塔', q:'福岡タワー'},{n:'中洲屋台', q:'中洲屋台'}],
+  rm:'transit',
+  items:[
+    {t:'', free:true, name:'✈️ 去程航班 · 资料待补', icon:'',
+      tipw:'你 trip.com 的行程里<b>只有回程（PR425 → PR529），没有去程</b>。把去程电子机票截图发我，我会把今天整天按落地时间重排。'},
+    {t:'', free:true, name:'🛬 福冈机场 → 博多', q:APT, m:'transit',
+      meta:'国际线航站楼要先搭<b>免费接驳巴士到国内线航站楼</b>（约 15 分钟），再搭地铁机场线到博多站（2 站、约 5 分钟）。',
+      tipg:'5 个人 + 5 件行李：日本一般出租车<b>最多载 4 人</b>，要叫两台，或在国际线出租车站说要「ジャンボタクシー」（大型出租车）。国际线到博多站约 15–20 分钟。'},
+    {t:'15:00', name:'入住 SG Hotel Kinshai Hakata', q:H.hkt.q, hi:true, icon:'🛏', m:'transit',
+      meta:H.hkt.addr+' · <a class="tel" href="tel:+81922921015">'+H.hkt.tel+'</a>',
+      tipg:'入住 15:00–02:00，晚到也没问题。<b>住 3 晚（12/10–12/13）</b>。'},
+    {t:'17:40', name:'出门 → 福冈塔', q:'福岡タワー', m:'transit',
+      meta:'酒店搭出租车约 20 分钟（两台）；或博多站搭西铁巴士往「福岡タワー」。'},
+    {t:'18:00', name:'福冈塔 · 夜景', q:'福岡タワー', hi:true,
+      hours:'9:30–22:00（21:30 停止入场）',
+      meta:'234 米海边塔，123 米展望室看博多湾与市区。<b>今天日落约 17:15</b>，18:00 上去刚好全黑、灯全亮。'},
+    {t:'19:45', name:'晚餐 · 中洲屋台', q:'中洲屋台', hi:true, badge:'cash', m:'transit',
+      hours:'多数摊约 18:00–24:00 · 雨天与强风天很多摊不出',
+      meta:'那珂川边一整排路边摊：豚骨拉面、关东煮、烤串、明太子玉子烧。',
+      tipw:'⚠️ 每摊只有 <b>8–10 个位子</b>，5 个人一起坐要早去或<b>分两摊</b>。大多只收现金，一人点一样以上是礼貌。'},
+    {t:'21:30', name:'回酒店', q:H.hkt.q, m:'transit', meta:'中洲 → 酒店出租车约 10 分钟。明天开始开车，早点睡。'}
+  ]
+},
+{
+  date:'2026-12-11', dow:'周五', c:'--d2',
+  title:'门司港 · 小仓城 · 北九州 Outlet · 皿仓山夜景',
+  sub:'自驾第一天，也是开最多的一天（来回约 170 km）。皿仓山是「新日本三大夜景」，所以压在日落时上山。',
+  sleep:{ k:'hkt' }, drive:'约 <b>3 小时 50 分</b> · 190 km',
+  route:[{n:'博多（取车）', q:'博多駅'},{n:'门司港 Retro', q:'門司港レトロ展望室'},{n:'小仓城', q:'小倉城'},{n:'THE OUTLETS', q:'THE OUTLETS KITAKYUSHU'},{n:'皿仓山缆车', q:'皿倉山ケーブルカー 山麓駅'},{n:'SG Hotel 博多', q:H.hkt.q}],
+  items:[
+    {t:'08:00', name:'🚗 取车 · 博多站周边', q:'博多駅', hi:true, badge:'book',
+      meta:'租车资料还没收到，这里先按「博多站周边营业所 08:00 取车」排。',
+      tipw:'取车时当场确认四件事：<b>① 雪胎（スタッドレスタイヤ）</b>——12/15 要开九重与阿苏山路；<b>② ETC 卡</b>；<b>③ KEP 九州高速周游券</b>（只能在租车柜台买）；<b>④ 车内导航可以切英文</b>，以及加油要加哪种油。'},
+    {t:'08:30', name:'出发 → 门司港', q:'門司港レトロ', dr:'87 km · 约 1 小时 25 分 · 都市高速 + 九州道',
+      tipg:'日本也是<b>靠左行驶、右驾</b>，跟马来西亚一样。第一段走高速，适应一下再进市区。'},
+    {t:'10:00', name:'门司港 Retro 展望室', q:'門司港レトロ展望室',
+      hours:'10:00–22:00',
+      meta:'Retro High-Mart 31 楼，看关门海峡与对岸下关。停车用门司港 Retro 周边收费停车场。'},
+    {t:'10:40', name:'门司港 Retro 漫步', q:'門司港レトロ', hi:true, m:'walking',
+      meta:'旧门司税关、旧门司三井俱乐部、门司港站（重要文化财）、蓝翼门司吊桥。走路就能逛完。',
+      tipg:'「蓝翼门司」步行吊桥每天固定几个整点会升起再合上，刚好遇到可以看。'},
+    {t:'12:00', name:'午餐 · 门司港烧咖喱', q:'門司港 焼きカレー', meta:'门司港名物「焼きカレー」，咖喱饭铺芝士和蛋进烤箱。'},
+    {t:'13:00', name:'→ 小仓城', q:'小倉城', dr:'12.7 km · 约 30 分钟'},
+    {t:'13:30', name:'小仓城', q:'小倉城',
+      hours:'冬季约 9:00–17:00（各来源不一，以现场为准）· 全年无休 · 一般 ¥500（2026/4 起）',
+      meta:'城内展示做得很新，顶楼看小仓市区。旁边小仓城庭园有共通券。'},
+    {t:'15:00', name:'THE OUTLETS KITAKYUSHU', q:'THE OUTLETS KITAKYUSHU', dr:'7.5 km · 约 16 分钟',
+      hours:'约 10:00–20:00',
+      meta:'旧 Space World 原址的 outlet，停车免费。逛到 16:40 就要走。'},
+    {t:'16:45', name:'→ 皿仓山缆车 山麓站', q:'皿倉山ケーブルカー 山麓駅', dr:'9 km · 约 25 分钟'},
+    {t:'17:00', name:'皿仓山 · 缆车上山看日落与夜景', q:'皿倉山ケーブルカー 山麓駅', hi:true, badge:'must',
+      hours:'11–3 月 10:00–20:00（山顶最后上行约 19:20）· <b>每周二停驶</b>（今天周五，正常）',
+      meta:'缆车 + 斜坡缆车两段到山顶。<b>日落约 17:15</b>，天黑后就是「新日本三大夜景」的北九州工业带灯海。',
+      tipw:'山顶比平地冷 5°C 以上、风很大，<b>带厚外套</b>。2/15–2/26 有年度停驶，不影响你们。'},
+    {t:'18:45', name:'晚餐 · 八幡 / 小仓一带', q:'八幡駅'},
+    {t:'20:00', name:'开回博多', q:H.hkt.q, dr:'73 km · 约 1 小时 20 分',
+      tipw:'夜间高速 + 一整天的疲劳——<b>今天司机一定要轮换</b>，回程换一个白天没开的人。'},
+    {t:'21:20', name:'回到酒店', q:H.hkt.q, meta:'停车位以酒店安排为准（见待办）。'}
+  ]
+},
+{
+  date:'2026-12-12', dow:'周六', c:'--d3',
+  title:'太宰府 · 九州国立博物馆 · 鸟栖 Outlet · ν 高达',
+  sub:'⚠️ 原本的「九年庵」今天不开放（只在 11/14–11/29 开），已换成太宰府旁边的九州国立博物馆。周六人多，太宰府要早到。',
+  sleep:{ k:'hkt' }, drive:'约 <b>1 小时 40 分</b> · 70 km',
+  route:[{n:'SG Hotel 博多', q:H.hkt.q},{n:'太宰府天满宫', q:'太宰府天満宮'},{n:'九州国立博物馆', q:'九州国立博物館'},{n:'鸟栖 Outlet', q:'鳥栖プレミアム・アウトレット'},{n:'ららぽーと福冈', q:'ららぽーと福岡'},{n:'SG Hotel 博多', q:H.hkt.q}],
+  items:[
+    {t:'08:30', name:'出发 → 太宰府', q:'太宰府天満宮', dr:'17.7 km · 约 35 分钟',
+      tipw:'<b>周六 10 点后参道周边停车场常满</b>，排队进停车场会吃掉半小时。早到是今天的关键。'},
+    {t:'09:00', name:'太宰府天满宫 + 表参道', q:'太宰府天満宮', hi:true,
+      hours:'约 6:30–18:30 · 免费',
+      meta:'学问之神菅原道真。参道必吃<b>梅枝饼</b>（现烤红豆饼），隈研吾设计的星巴克也在参道上。'},
+    {t:'10:45', name:'九州国立博物馆（替代九年庵）', q:'九州国立博物館',
+      hours:'9:30–17:00（16:30 停止入馆）· <b>周一休馆</b>（今天周六，有开）',
+      meta:'从天满宫走彩虹隧道（电扶梯 + 步道）就到。建筑本身很好拍，一楼亚洲文化交流区免费。',
+      tipx:'🔴 <b>九年庵今天不开</b>：九年庵只在秋季（2026 年为 11/14–11/29）与春季少数几天公开，12/12 一定是关的。trip.com 显示「Temporarily closed」就是这个原因。'},
+    {t:'12:00', name:'午餐 · 太宰府参道', q:'太宰府天満宮 表参道'},
+    {t:'13:00', name:'→ 鸟栖 Premium Outlets', q:'鳥栖プレミアム・アウトレット', dr:'约 20 km · 约 30 分钟'},
+    {t:'13:30', name:'鸟栖 Premium Outlets', q:'鳥栖プレミアム・アウトレット', hi:true,
+      hours:'10:00–20:00',
+      meta:'九州最大的 outlet 之一，约 150 家店。逛 3 小时。'},
+    {t:'16:40', name:'→ ららぽーと福冈', q:'ららぽーと福岡', dr:'28 km · 约 30–45 分钟（周六傍晚会塞）'},
+    {t:'17:30', name:'ららぽーと福冈 · 实物大 ν 高达', q:'ららぽーと福岡 実物大νガンダム立像', hi:true,
+      hours:'商场约 10:00–21:00 · 高达白天「起动」演出 10:00–18:00 每整点 · 夜间影像演出 19:00–21:00 每 30 分钟',
+      meta:'24.8 米的 RX-93ff ν 高达。冬季有特别点灯版。晚餐在商场里解决。'},
+    {t:'19:00', name:'ν 高达夜间演出', q:'ららぽーと福岡 実物大νガンダム立像',
+      meta:'19:00 / 19:30 / 20:00 / 20:30 / 21:00，挑一场看就好。'},
+    {t:'20:00', name:'回酒店', q:H.hkt.q, dr:'约 3 km · 10 分钟',
+      tipg:'今晚是博多最后一晚，<b>行李今晚收好</b>，明早直接装车。'}
+  ]
+},
+{
+  date:'2026-12-13', dow:'周日', c:'--d4',
+  title:'秋月城迹 → 别府地狱巡礼 → 别府塔 · 十文字原夜景',
+  sub:'trip.com 把十文字原排在中午，但它是夜景点——我改到晚上。地狱巡礼 17:00 关门，所以下午先做。',
+  sleep:{ k:'bep', move:true }, drive:'约 <b>3 小时 10 分</b> · 175 km',
+  route:[{n:'SG Hotel 博多', q:H.hkt.q},{n:'秋月城迹', q:'秋月城跡'},{n:'铁轮 · 海地狱', q:'海地獄'},{n:'血之池地狱', q:'血の池地獄'},{n:'汤烟展望台', q:'湯けむり展望台'},{n:'AMANEK 别府', q:H.bep.q},{n:'十文字原展望台', q:'十文字原展望台'}],
+  items:[
+    {t:'09:00', name:'退房 · 出发 → 秋月', q:'秋月城跡', dr:'49 km · 约 1 小时', meta:'退房时限 11:00，今天要早走。'},
+    {t:'10:00', name:'秋月城迹 · 杉之马场', q:'秋月城跡',
+      hours:'全天开放 · 免费',
+      meta:'「筑前小京都」。黑门、杉之马场、秋月眼镜桥。红叶季已过，冬天很安静，走一圈 1 小时。'},
+    {t:'11:00', name:'→ 别府', q:'鉄輪温泉', dr:'约 105 km · 约 1 小时 30 分 · 大分道'},
+    {t:'12:30', name:'午餐 · 铁轮 地狱蒸工房', q:'地獄蒸し工房 鉄輪',
+      meta:'用温泉蒸气自己蒸海鲜、蔬菜、鸡蛋。就在海地狱附近。'},
+    {t:'13:30', name:'别府地狱巡礼', q:'海地獄', hi:true, badge:'must',
+      hours:'8:00–17:00 · 无休 · 7 个地狱共通券（单点约 ¥450）',
+      meta:'铁轮区 5 个（海地狱、鬼石坊主、灶地狱、鬼山、白池）走路串；<b>血之池、龙卷</b>在 3 km 外的柴石，开车过去。龙卷地狱间歇泉约 30–40 分钟喷一次。',
+      tipw:'共通券比单买划算，5 个人一起买。<b>16:30 前要进完最后一个</b>。'},
+    {t:'16:40', name:'汤烟展望台', q:'湯けむり展望台', dr:'约 10 分钟',
+      meta:'看整片铁轮温泉街冒白烟，傍晚天色暗下来最有气氛。免费。'},
+    {t:'17:20', name:'入住 AMANEK 别府 YULA-RE', q:H.bep.q, hi:true, icon:'🛏', dr:'5.7 km · 约 15 分钟',
+      meta:H.bep.addr+' · <a class="tel" href="tel:+81977765566">'+H.bep.tel+'</a>',
+      tipg:'停车是外部合作停车场（约 ¥600／日），到柜台问位置。'},
+    {t:'18:00', name:'别府塔', q:'別府タワー', m:'walking',
+      hours:'9:30–21:30（21:00 停止入场）', meta:'酒店走路 5 分钟。昭和风老铁塔，看别府湾夜景。'},
+    {t:'18:45', name:'晚餐 · 别府站周边', q:'別府駅', m:'walking',
+      meta:'大分名物：とり天（天妇罗炸鸡）、别府冷面、关鲭鱼。',
+      tipw:'等一下还要开山路去十文字原——<b>司机今晚一滴酒都不能喝</b>（日本酒驾零容忍，同车乘客也会被罚）。'},
+    {t:'20:00', name:'十文字原展望台 · 别府夜景', q:'十文字原展望台', dr:'约 25 分钟 · 山路', hi:true,
+      meta:'俯瞰别府湾的夜景点，免费、有停车场。',
+      tipw:'⚠️ 12 月夜间山路<b>可能结冰起雾</b>。雾大或路面看起来湿亮就别上去，在别府塔看过就够了。'},
+    {t:'21:15', name:'竹瓦温泉（别府温泉）', q:'竹瓦温泉', badge:'cash',
+      hours:'约 6:30–22:30', meta:'1938 年的木造公共浴场，酒店步行约 10 分钟。门票很便宜、只收现金。还有砂浴（另收费，时间较早结束）。'}
+  ]
+},
+{
+  date:'2026-12-14', dow:'周一', c:'--d5',
+  title:'别府 → 由布院 · 汤之坪街道 · 金鳞湖',
+  sub:'今天开车不到一小时，是整趟最轻松的一天。累的话下午直接回别墅泡汤。',
+  sleep:{ k:'yuf', move:true, warn:true }, drive:'约 <b>50 分钟</b> · 27 km',
+  route:[{n:'AMANEK 别府', q:H.bep.q},{n:'汤之坪街道', q:'湯の坪街道'},{n:'Floral Village', q:'湯布院フローラルヴィレッジ'},{n:'金鳞湖', q:'金鱗湖'},{n:'Rakuten STAY VILLA', q:H.yuf.q}],
+  items:[
+    {t:'08:00', name:'早餐 · 早上泡汤', meta:'不赶时间，别府的早上慢慢来。'},
+    {t:'10:00', name:'退房 · 出发 → 由布院', q:'湯の坪街道', dr:'23 km · 约 40 分钟'},
+    {t:'10:45', name:'汤之坪街道', q:'湯の坪街道', hi:true, m:'walking',
+      meta:'由布院主街，甜点、杂货、小吃一路逛：B-speak 蛋糕卷、金赏可乐饼、Milch 布丁。停车用街道周边收费停车场。'},
+    {t:'12:15', name:'午餐 · 由布院', q:'湯布院 ランチ', meta:'丰后牛、地鸡、荞麦面都是这里的招牌。'},
+    {t:'13:30', name:'由布院 Floral Village + 猫头鹰森林', q:'湯布院フローラルヴィレッジ',
+      hours:'约 9:30–17:30（平日可能 17:00 关）· 村子免费进 · 猫头鹰森林另收费约 ¥700',
+      meta:'仿英国科茨沃尔德的小村，有猫头鹰、刺猬、兔子可以互动。'},
+    {t:'14:30', name:'金鳞湖', q:'金鱗湖', m:'walking',
+      meta:'湖底有温泉涌出，<b>冬天早上会冒「朝雾」</b>，是由布院最出名的画面。下午先来散步。',
+      tipg:'想看朝雾：明早 7:20 从别墅开 7 分钟过来，看 20 分钟再出发去九重，时间排得进（见明天第一项）。'},
+    {t:'15:30', name:'入住 Rakuten STAY VILLA 由布院温泉', q:H.yuf.q, hi:true, icon:'🛏',
+      meta:H.yuf.addr+' · <a class="tel" href="tel:+815017509719">'+H.yuf.tel+'</a>',
+      tipw:'⚠️ <b>这一晚在 trip.com 上没有「已订」标记，也没有入住日期</b>——其他 6 间都有。请确认是不是真的订了；没订的话 12 月由布院周一晚上还订得到，但要快。<br>这是自助入住：房门密码会事先寄来，<b>出发前确认邮件里有密码</b>。'},
+    {t:'16:00', name:'泡汤 · 休息', meta:'由布院是温泉乡，今晚就是泡汤和吃饭。'},
+    {t:'18:30', name:'晚餐', q:'由布院駅',
+      tipw:'由布院餐厅很多 <b>18:00–20:00 就收</b>，5 个人建议先订位；或超市买回别墅吃。'}
+  ]
+},
+{
+  date:'2026-12-15', dow:'周二', c:'--d6',
+  title:'九重梦大吊桥 → 大观峰 → 阿苏 · 草千里 → 上色见熊野座神社',
+  sub:'⚠️ 阿苏中岳火口目前封闭（噴火警戒 Level 2），改看草千里 + 火山博物馆。整天在海拔 800–1,100 米的山路上——一定要雪胎。',
+  sleep:{ k:'aso', move:true }, drive:'约 <b>3 小时 10 分</b> · 150 km',
+  route:[{n:'Rakuten STAY VILLA', q:H.yuf.q},{n:'九重梦大吊桥', q:'九重夢大吊橋'},{n:'大观峰', q:'大観峰'},{n:'阿苏神社', q:'阿蘇神社'},{n:'草千里', q:'草千里ヶ浜'},{n:'上色见熊野座神社', q:'上色見熊野座神社'},{n:'亀の井ホテル 阿苏', q:H.aso.q}],
+  items:[
+    {t:'07:20', name:'（可选）金鳞湖朝雾', q:'金鱗湖', dr:'3.4 km · 7 分钟',
+      meta:'气温越低、晴朗无风的早上越容易出现。拍完就回去拿行李。'},
+    {t:'08:15', name:'退房 · 出发 → 九重', q:'九重夢大吊橋', dr:'约 25 km · 35 分钟 · やまなみハイウェイ',
+      tipw:'❄️ <b>12 月早上这段高原公路可能结冰</b>（桥面、背阴弯道最危险）。慢开、不急刹，有雪胎才走。出门前看 JARTIC 或 NEXCO 道路资讯。'},
+    {t:'08:50', name:'九重"梦"大吊桥', q:'九重夢大吊橋', hi:true,
+      hours:'11–6 月 8:30–17:00 · 无休 · ¥500（中学生以上）',
+      meta:'日本最高的人行吊桥，离谷底 173 米。来回走约 30 分钟。',
+      tipw:'强风（15 m/s 以上）、浓雾、大雪警报时会限制入场。'},
+    {t:'09:50', name:'→ 大观峰', q:'大観峰', dr:'37 km · 约 50 分钟'},
+    {t:'10:45', name:'大观峰', q:'大観峰', hi:true,
+      hours:'全天开放 · 免费 · 免费停车',
+      meta:'阿苏外轮山最高点（936 m），一眼看完整个阿苏火山口盆地与涅槃像般的五岳。'},
+    {t:'11:30', name:'→ 阿苏市区', q:'阿蘇神社', dr:'约 20 分钟'},
+    {t:'12:00', name:'午餐 · 阿苏神社门前町', q:'阿蘇神社', meta:'赤牛丼（阿苏和牛）是招牌。门前町商店街有涌水和小吃，阿苏神社顺便参拜。'},
+    {t:'13:15', name:'→ 草千里（经米冢）', q:'草千里ヶ浜', dr:'约 30 分钟 · 阿苏全景道路'},
+    {t:'13:45', name:'草千里之滨 + 阿苏火山博物馆', q:'草千里ヶ浜', hi:true,
+      hours:'草千里全天 · 火山博物馆约 9:00–17:00',
+      meta:'火山口旁的大草原与水池，冬天草是金黄色。火山博物馆有火口实况影像，看不到火口就在这里看。',
+      tipx:'🔴 <b>中岳火口现在去不了</b>：气象厅 11/6 第 31 号解说情报，阿苏山维持<b>噴火警戒 Level 2（火口周辺規制），中岳第一火口约 1 km 内禁止进入</b>，火口见学与接驳巴士暂停。trip.com 也标「Temporarily closed」。<br><b>12/14 晚上再查一次</b>（待办里有）；万一降到 Level 1 重开，从草千里开 10 分钟就到。'},
+    {t:'15:00', name:'→ 上色见熊野座神社', q:'上色見熊野座神社', dr:'24 km · 约 35 分钟'},
+    {t:'15:40', name:'上色见熊野座神社', q:'上色見熊野座神社', hi:true,
+      hours:'全天开放 · 免费',
+      meta:'约 100 座石灯笼沿着长满青苔的石阶排进杉林，最后是被风穿出大洞的「穿戸岩」。',
+      tipw:'林子里<b>16:30 以后就很暗</b>，石阶湿滑。穿好走的鞋，别拖到太晚。'},
+    {t:'16:40', name:'入住 亀の井ホテル 阿苏', q:H.aso.q, hi:true, icon:'🛏', dr:'19 km · 约 26 分钟',
+      meta:H.aso.addr+' · <a class="tel" href="tel:+81967221122">'+H.aso.tel+'</a>',
+      tipw:'⚠️ 这间的<b>入住时间只到 18:00</b>。今天任何一站拖延，都要留意这个时限；会晚到就先打电话。'},
+    {t:'18:00', name:'泡汤 · 晚餐', meta:'阿苏晚上会降到 0°C 上下，今晚就待在酒店。'}
+  ]
+},
+{
+  date:'2026-12-16', dow:'周三', c:'--d7',
+  title:'高千穗峡划船 → 熊本城 → 城彩苑 → 熊本熊广场',
+  sub:'高千穗峡的船要网上预约（5 人 = 2 艘）。熊本城关门早，所以排在熊本熊广场之前。trip.com 里的「吉次园」我拿掉了。',
+  sleep:{ k:'kum', move:true }, drive:'约 <b>3 小时</b> · 135 km',
+  route:[{n:'亀の井ホテル 阿苏', q:H.aso.q},{n:'高千穗峡', q:'高千穂峡 貸しボート'},{n:'熊本城', q:'熊本城'},{n:'城彩苑', q:'桜の馬場 城彩苑'},{n:'熊本熊广场', q:'くまモンスクエア'},{n:'The Blossom', q:H.kum.q}],
+  items:[
+    {t:'07:45', name:'退房 · 出发 → 高千穗', q:'高千穂峡 貸しボート', dr:'51 km · 约 1 小时 10 分 · 山路',
+      tipw:'早上山路一样小心结冰。御塩井停车场离船坞最近，满了就停上方的停车场走下去。'},
+    {t:'09:00', name:'高千穗峡 · 划船', q:'高千穂峡 貸しボート', hi:true, badge:'book',
+      hours:'8:30–17:00（16:30 最后受理）· 30 分钟一艘 ¥4,100–5,100 · 涨水时停',
+      meta:'划到真名井瀑布下面，是高千穗峡最经典的画面。',
+      tipw:'⚠️ <b>每艘最多 3 人 → 你们要订 2 艘</b>。网上预约<b>开放于乘船日前 2 周、截止前 2 天早上 9:00</b>，也就是 <b>12/2 09:00 – 12/14 09:00</b>。当天现场名额很少。'},
+    {t:'09:45', name:'高千穗峡游步道 · 真名井瀑布', q:'真名井の滝', m:'walking',
+      meta:'沿峡谷走一段，从上面再看一次瀑布与柱状节理。'},
+    {t:'10:40', name:'高千穗神社', q:'高千穂神社', dr:'约 5 分钟',
+      meta:'夫妇杉手牵手绕三圈的传说。晚上的夜神乐你们赶不上，白天看神社就好。'},
+    {t:'11:15', name:'午餐 · 高千穗町', q:'高千穂町 ランチ', meta:'高千穗牛、流水素面（千穂の家 就在峡谷边）。'},
+    {t:'12:00', name:'→ 熊本市', q:'熊本城', dr:'75 km · 约 1 小时 40 分'},
+    {t:'13:45', name:'熊本城', q:'熊本城', hi:true, badge:'must',
+      hours:'约 9:00–17:00（最后入园约 16:00）· 12/29 休园 · 约 ¥800',
+      meta:'2016 年地震后修复完成的天守阁，内部是博物馆。停车用二之丸停车场或城彩苑停车场。',
+      tipw:'⚠️ 熊本城在 <b>2026 年 7 月的熊本地震后临时休园、8/13 才重新开放</b>，开放区域与时间可能和以前不同。<b>当天出发前看一次熊本城官网</b>。'},
+    {t:'15:45', name:'樱之马场 城彩苑', q:'桜の馬場 城彩苑', m:'walking',
+      hours:'约 9:00–17:30', meta:'城脚下的美食与伴手礼街，熊本拉面、马肉可乐饼、いきなり団子。'},
+    {t:'16:45', name:'熊本熊广场（くまモンスクエア）', q:'くまモンスクエア', hi:true,
+      hours:'10:00–19:00 · 免费 · 12/31–1/2 休',
+      meta:'熊本熊部长的「办公室」。<b>熊本熊本人出场的时间每天公布在官网</b>，出发前看一下，挑得到就看。',
+      tipg:'从城彩苑开车约 5 分钟，停鹤屋百货或附近收费停车场；或者车留在城彩苑，走路 15 分钟。'},
+    {t:'18:00', name:'晚餐 · 下通 / 上通', q:'下通アーケード', meta:'熊本拉面（黑蒜油）、太平燕、马肉刺身。'},
+    {t:'19:30', name:'入住 The Blossom Kumamoto', q:H.kum.q, hi:true, icon:'🛏', dr:'约 15 分钟',
+      meta:H.kum.addr+' · <a class="tel" href="tel:+81963278763">'+H.kum.tel+'</a>'},
+    {t:'', free:true, name:'🔴 吉次园 · 拿掉了', q:'観光農園 吉次園',
+      tipx:'吉次园是熊本北边植木町的<b>观光果园</b>（草莓狩），2025–26 季的草莓狩是 <b>12 月下旬</b>才开始，12/16 大概率还没得采；而且 <b>17:00 关门</b>，排在熊本城后面根本赶不上。<br>要去只能把熊本城压缩，不值得——我的建议是放弃。'}
+  ]
+},
+{
+  date:'2026-12-17', dow:'周四', c:'--d8',
+  title:'熊本港渡轮 → 岛原 → 长崎原爆资料馆 · 中华街 · 稻佐山夜景',
+  sub:'连车带人坐渡轮过有明海，省掉绕陆路的 2 小时。稻佐山是夜景点，trip.com 排在中午，我改到晚上。',
+  sleep:{ k:'ngs', move:true }, drive:'约 <b>2 小时 40 分</b> + 渡轮 30 分',
+  route:[{n:'The Blossom', q:H.kum.q},{n:'熊本港', q:'熊本港'},{n:'岛原港', q:'島原港'},{n:'原爆资料馆', q:'長崎原爆資料館'},{n:'眼镜桥', q:'眼鏡橋 長崎'},{n:'新地中华街', q:'長崎新地中華街'},{n:'Fav LUX 长崎', q:H.ngs.q},{n:'稻佐山', q:'稲佐山展望台'}],
+  items:[
+    {t:'08:15', name:'退房 · 出发 → 熊本港', q:'熊本港', dr:'约 12 km · 25 分钟'},
+    {t:'08:55', name:'熊本港 · 车辆登船手续', q:'熊本港', hi:true,
+      meta:'车辆要比开船时间早到办手续，排队上船。'},
+    {t:'09:25', name:'⛴ Ocean Arrow 高速渡轮 → 岛原港', q:'島原港', hi:true, badge:'book', icon:'',
+      meta:'熊本フェリー「オーシャンアロー」，约 30 分钟。熊本港出发时刻：7:30 / 9:25 / 11:10 / 13:00 / 14:50 / 16:40 / 18:30。',
+      tipw:'⚠️ <b>车位建议先网上预约</b>。备案：九商フェリー（约 60 分钟，就是 trip.com 写的 10:00→11:00 那班），两家都是熊本港 ⇄ 岛原港，时刻出发前再确认一次。'},
+    {t:'10:00', name:'抵达岛原港 → 长崎', q:'長崎原爆資料館', dr:'约 75 km · 约 1 小时 40 分 · 经谏早上长崎道',
+      tipg:'想看岛原城的话就在港口旁边（开车 5 分钟），停 30 分钟、午餐往后挪即可。'},
+    {t:'11:45', name:'长崎原爆资料馆 + 平和公园', q:'長崎原爆資料館', hi:true,
+      hours:'8:30–17:30（17:00 停止入馆）· 年末 12/29–31 休 · 约 ¥200',
+      meta:'资料馆看 1–1.5 小时，走几分钟到平和公园看和平祈念像。资料馆地下有停车场。',
+      tipg:'trip.com 原本把这里排在稻佐山之后，按那个顺序到这里会超过 17:00。我把它提到中午。'},
+    {t:'13:30', name:'午餐 · 长崎强棒面 / 皿乌冬', q:'長崎ちゃんぽん', meta:'长崎ちゃんぽん、皿うどん。'},
+    {t:'14:30', name:'眼镜桥 · 中岛川', q:'眼鏡橋 長崎', m:'walking',
+      meta:'日本最古老的石造拱桥之一。河岸石墙上藏着几颗<b>心形石头</b>，找找看。'},
+    {t:'15:15', name:'长崎新地中华街', q:'長崎新地中華街', m:'walking',
+      hours:'多数店约 10:00–21:00', meta:'日本三大中华街之一，角煮包、胡麻団子边走边吃。'},
+    {t:'16:00', name:'入住 Fav LUX 长崎', q:H.ngs.q, hi:true, icon:'🛏',
+      meta:H.ngs.addr+' · <a class="tel" href="tel:+815017945808">'+H.ngs.tel+'</a>',
+      tipw:'停车是<b>外部停车场、不能预约</b>（约 ¥2,000／日）。到了先打给酒店问停哪里，别在门口绕。'},
+    {t:'16:30', name:'大浦天主堂 / 哥拉巴园一带', q:'大浦天主堂', m:'walking',
+      meta:'就在酒店旁边，步行 5 分钟。哥拉巴园约开到 18:00，看港口黄昏。'},
+    {t:'17:20', name:'长崎港 · 出岛 Wharf 日落', q:'出島ワーフ', m:'walking',
+      meta:'<b>日落约 17:20</b>。港边木栈道一整排餐厅，可以直接在这里吃晚餐。'},
+    {t:'18:00', name:'晚餐 · 出岛 Wharf / 思案桥', q:'出島ワーフ'},
+    {t:'19:15', name:'稻佐山 · 夜景', q:'稲佐山展望台', hi:true, badge:'must', dr:'约 20 分钟',
+      hours:'展望台全天 · 长崎缆车约 9:00–22:00',
+      meta:'「世界新三大夜景」。可以开车到山顶停车场（收费），或开到淵神社站坐长崎缆车上去。',
+      tipw:'长崎缆车今年有过故障停驶，<b>当天看官网或「INASAなび」</b>；停驶就直接开车上山顶。'},
+    {t:'21:00', name:'回酒店', q:H.ngs.q, dr:'约 20 分钟'}
+  ]
+},
+{
+  date:'2026-12-18', dow:'周五', c:'--d9',
+  title:'御船山乐园 → 雷山千如寺 → 糸岛牡蛎小屋 → 樱井二见浦日落',
+  sub:'从长崎一路开回福冈，中间三站。二见浦的夫妇岩是日落点，所以压在最后。',
+  sleep:{ k:'mar', move:true }, drive:'约 <b>3 小时 30 分</b> · 185 km',
+  route:[{n:'Fav LUX 长崎', q:H.ngs.q},{n:'御船山乐园', q:'御船山楽園'},{n:'雷山千如寺', q:'雷山千如寺大悲王院'},{n:'岐志 牡蛎小屋', q:'岐志漁港 牡蠣小屋'},{n:'樱井二见浦', q:'桜井二見ヶ浦 夫婦岩'},{n:'Marinoa', q:H.mar.q}],
+  items:[
+    {t:'08:30', name:'退房 · 出发 → 武雄', q:'御船山楽園', dr:'67 km · 约 1 小时 · 长崎道'},
+    {t:'09:30', name:'御船山乐园', q:'御船山楽園', hi:true,
+      hours:'一般期约 8:00–17:00 · 约 ¥500',
+      meta:'15 万坪的回游式庭园，背后是断崖般的御船山。',
+      tipg:'红叶祭与 teamLab 夜间展是到 12/6，你们来的时候是一般期——人少，白天看庭园刚好。'},
+    {t:'10:45', name:'（顺路）武雄温泉楼门', q:'武雄温泉楼門', dr:'约 5 分钟', meta:'辰野金吾设计、不用一根钉子的朱红楼门，停 15 分钟拍照。'},
+    {t:'11:15', name:'→ 雷山千如寺', q:'雷山千如寺大悲王院', dr:'73 km · 约 1 小时 20 分'},
+    {t:'12:40', name:'雷山千如寺大悲王院', q:'雷山千如寺大悲王院',
+      hours:'9:00–16:30 · 无休 · ¥500',
+      meta:'山腰的古寺，五百罗汉与心字池庭园。',
+      tipw:'这里以 11 月中的大枫树红叶出名，<b>12/18 叶子基本掉光了</b>。没兴趣看庭园的话可以跳过，直接去吃牡蛎。'},
+    {t:'13:45', name:'午餐 · 糸岛牡蛎小屋', q:'岐志漁港 牡蠣小屋', hi:true, dr:'约 30 分钟',
+      meta:'冬季限定（约 10 月底到 3 月），渔港边的铁皮屋自己烤牡蛎。这是 12 月来糸岛最值得的一件事。',
+      tipw:'多数小屋要穿店家给的外套（会喷汁）；<b>有的只收现金</b>。'},
+    {t:'15:30', name:'樱井二见浦 · 夫妇岩与白鸟居', q:'桜井二見ヶ浦 夫婦岩', hi:true, dr:'约 20 分钟',
+      hours:'全天开放 · 免费',
+      meta:'海中两块用注连绳系在一起的夫妇岩，前面一座白色鸟居。<b>日落约 17:15</b>，旁边一排海景咖啡店可以坐着等。'},
+    {t:'17:30', name:'→ Hotel Marinoa', q:H.mar.q, dr:'20 km · 约 35 分钟'},
+    {t:'18:10', name:'入住 Hotel Marinoa Resort Fukuoka', q:H.mar.q, hi:true, icon:'🛏',
+      meta:H.mar.addr+' · <a class="tel" href="tel:+81928955511">'+H.mar.tel+'</a>',
+      tipg:'住 2 晚（12/18–12/20）。隔壁就是 Marinoa City Outlet。'},
+    {t:'19:00', name:'晚餐 · Marinoa City / 酒店周边', q:'マリノアシティ福岡'}
+  ]
+},
+{
+  date:'2026-12-19', dow:'周六', c:'--d10',
+  title:'teamLab Forest · 天神 · I\'m donut? · 运河城 · 栉田神社',
+  sub:'福冈市区的最后一天。车子只停一次（天神），之后全部走路。周六市区停车难，别一站一停。',
+  sleep:{ k:'mar' }, drive:'约 <b>1 小时</b> · 30 km',
+  route:[{n:'Marinoa', q:H.mar.q},{n:'teamLab Forest', q:'チームラボフォレスト福岡'},{n:'天神地下街', q:'天神地下街'},{n:'mont-bell 天神', q:'モンベル 福岡天神店'},{n:'I\'m donut?', q:'I\'m donut? 福岡店'},{n:'运河城博多', q:'キャナルシティ博多'},{n:'栉田神社', q:'櫛田神社'},{n:'Marinoa', q:H.mar.q}],
+  items:[
+    {t:'09:30', name:'出发 → BOSS E・ZO FUKUOKA', q:'BOSS E・ZO FUKUOKA', dr:'5.7 km · 约 15 分钟', meta:'停 PayPay 巨蛋周边停车场。'},
+    {t:'10:00', name:'teamLab Forest 福冈', q:'チームラボフォレスト福岡', hi:true, badge:'book',
+      hours:'周六日约 10:00–20:00（最后入场 19:00）· 平日 11:00 开',
+      meta:'在 BOSS E・ZO FUKUOKA 里，边走边「捕捉」数码动物的互动展。看 1–1.5 小时。',
+      tipw:'⚠️ 周六要<b>先网上买指定日期／时段的票</b>，现场可能售完。不少平台的票不能退改。'},
+    {t:'11:45', name:'→ 天神 · 停车', q:'天神地下街 駐車場', dr:'约 15 分钟',
+      tipw:'周六天神停车场中午就排队。可以先用 akippa 之类的 App 预约车位，或停到天神外围再走。'},
+    {t:'12:15', name:'午餐 · 天神', q:'天神', m:'walking'},
+    {t:'13:15', name:'天神地下街', q:'天神地下街', m:'walking', hours:'商店约 10:00–20:00', meta:'欧风石砖地下街，约 150 家店，下雨天也能逛。'},
+    {t:'14:15', name:'mont-bell 福冈天神店', q:'モンベル 福岡天神店', m:'walking', hours:'10:30–21:00', meta:'日本户外品牌，在日本买比马来西亚便宜，可以免税。'},
+    {t:'15:00', name:'I\'m donut? 福冈店', q:'I\'m donut? 福岡店', m:'walking', hi:true,
+      hours:'约 11:00–20:00（各来源不一，以店家 IG 为准）· 不定休',
+      meta:'渡边通，生甜甜圈名店。',
+      tipw:'⚠️ 排队常常 30–60 分钟以上，<b>卖完就提早关</b>。真的想吃就把它提到中午，或派两个人先去排。'},
+    {t:'15:45', name:'走去运河城博多', q:'キャナルシティ博多', m:'walking', meta:'约 15 分钟。'},
+    {t:'16:00', name:'运河城博多', q:'キャナルシティ博多', hi:true, m:'walking',
+      hours:'约 10:00–21:00', meta:'运河两岸的大型商场，整点有喷水秀，晚上有投影灯光秀。'},
+    {t:'17:30', name:'栉田神社', q:'櫛田神社', m:'walking',
+      hours:'4:00–22:00 · 免费', meta:'运河城走 4 分钟。博多祇园山笠的神社，境内常年展示巨大的山笠装饰。'},
+    {t:'18:15', name:'晚餐 · 博多牛肠锅 / 一兰本店', q:'中洲', m:'walking', meta:'博多もつ鍋（牛肠锅）、水炊き（鸡肉锅）。5 人记得先订位。'},
+    {t:'20:00', name:'取车 → 回 Marinoa', q:H.mar.q, dr:'约 25 分钟'},
+    {t:'21:00', name:'收行李', hi:true,
+      tipg:'🧳 <b>今晚收完</b>：明天还车前要留时间加油、清车上垃圾。液体超过 100 ml 放托运，充电宝只能随身。'}
+  ]
+},
+{
+  date:'2026-12-20', dow:'周日', c:'--d11',
+  title:'福冈城迹 · 大濠公园 → 还车 → PR425 / PR529 回家',
+  sub:'早上逛完城迹与大濠公园就去还车。航班 15:45，12:00 前要还车。',
+  sleep:{ label:'—— 回吉隆坡（12/21 凌晨 01:20 抵达）——' }, drive:'约 <b>45 分钟</b> · 25 km',
+  route:[{n:'Marinoa', q:H.mar.q},{n:'福冈城迹', q:'福岡城跡 天守台'},{n:'大濠公园', q:'大濠公園'},{n:'福冈机场 国际线', q:APT}],
+  items:[
+    {t:'09:00', name:'退房 · 出发 → 福冈城迹', q:'舞鶴公園', dr:'6.8 km · 约 18 分钟', meta:'退房时限 12:00，但今天要早走。停舞鹤公园停车场。'},
+    {t:'09:30', name:'福冈城迹 · 天守台 + 舞鹤公园', q:'福岡城跡 天守台',
+      hours:'城迹与天守台全天 · 免费', meta:'只剩石垣与天守台，爬上去看市区。'},
+    {t:'10:30', name:'大濠公园', q:'大濠公園', m:'walking', meta:'舞鹤公园旁边，绕湖散步、湖边星巴克坐一下。'},
+    {t:'11:30', name:'⛽ 加满油', q:'ガソリンスタンド 福岡空港', meta:'还车要「满油」，<b>留着加油收据</b>，柜台可能会看。'},
+    {t:'12:00', name:'🚗 还车 → 接驳车到国际线', q:APT, hi:true,
+      meta:'还车营业所以订单为准，多数在机场周边，坐营业所接驳车到国际线航站楼（10–15 分钟）。',
+      tipw:'还车前检查：车内导航里的个人资料、ETC 卡要还、手机充电线别忘在车上。'},
+    {t:'12:45', name:'福冈机场 国际线 · PR 报到 · 托运', q:APT, hi:true, icon:'🛂',
+      meta:'国际线建议起飞前 <b>3 小时</b>到。行李直挂到吉隆坡，马尼拉不用重领（以柜台说明为准）。'},
+    {t:'15:45', name:'PR425 起飞 → 马尼拉', q:APT, hi:true, icon:'✈️', meta:'福冈 → 马尼拉，约 4 小时 05 分。'},
+    {t:'18:50', tz:'+08:00', name:'抵达 马尼拉 NAIA · 转机', q:'Ninoy Aquino International Airport', hi:true, icon:'🛬',
+      meta:'<b>马尼拉时间（UTC+8）</b>，比日本慢 1 小时。转机约 2 小时 30 分，照「Transfer / Connecting flights」指示走。'},
+    {t:'21:20', tz:'+08:00', name:'PR529 起飞 → 吉隆坡', q:'Ninoy Aquino International Airport', hi:true, icon:'✈️', meta:'约 4 小时。'},
+    {t:'01:20', tz:'+08:00', nd:true, name:'抵达 吉隆坡 KLIA', q:'Kuala Lumpur International Airport', hi:true, icon:'🏠',
+      meta:'<b>12/21 凌晨，吉隆坡时间</b>。回家的交通先安排好——这个时间 KLIA Ekspres 已收班。'}
+  ]
+}
+];
+
+/* 地图几何（由 trip.com 路线点投影而来） */
+var GEO = {"routes": ["M340.8,198.8 L337.4,197.2 L332.4,189.5 L323.9,189.6 L320.3,192.7 L318.5,192.4", "M340.8,198.8 L337.4,197.2 L332.6,189.6 L338.2,186.0 L342.3,175.0 L357.2,179.0 L366.9,177.1 L367.1,174.1 L364.1,169.5 L363.6,162.3 L365.6,154.7 L365.5,145.4 L368.3,139.6 L381.0,127.2 L394.2,125.7 L415.5,129.0 L423.3,123.9 L428.5,122.9 L433.1,117.6 L447.4,112.6 L457.6,113.4 L468.6,105.8 L486.6,101.7 L497.8,104.9 L501.3,104.4 L507.8,95.9 L519.9,90.0 L526.6,79.2 L536.0,73.3 L537.0,61.7 L540.7,53.1 L537.0,50.4 L535.9,44.3 L534.0,42.9 L528.4,47.4 L525.2,56.7 L517.7,65.7 L508.4,69.1 L502.4,68.3 L502.2,72.1 L498.9,70.3 L493.1,72.4 L489.4,71.1 L484.3,75.7 L480.8,74.5 L481.8,75.5 L480.3,78.6 L474.7,80.5 L475.3,82.8 L472.1,87.1 L473.8,87.5 L474.8,86.5 L472.1,87.1 L475.3,82.8 L474.7,80.5 L478.3,78.5 L478.0,81.4 L465.2,84.4 L464.1,93.5 L456.3,100.8 L457.5,112.3 L455.9,114.3 L449.1,112.5 L438.6,115.3 L432.1,118.3 L428.7,122.8 L423.1,124.1 L415.4,129.1 L394.1,125.8 L381.2,127.2 L368.5,139.5 L365.7,144.9 L365.7,154.2 L363.7,162.0 L364.1,169.3 L367.4,177.4 L358.5,179.0 L342.3,175.1 L338.6,188.4 L345.7,195.0 L340.8,198.8", "M340.8,198.8 L349.1,195.8 L363.0,210.3 L369.0,223.4 L373.4,226.9 L380.5,226.1 L382.6,222.8 L380.4,226.2 L374.1,227.2 L369.0,223.6 L367.5,218.9 L369.9,219.4 L370.0,227.6 L381.7,249.3 L381.7,256.3 L384.9,266.4 L384.3,274.8 L381.1,276.7 L375.7,275.4 L369.5,276.8 L356.7,287.3 L341.4,293.2 L334.1,293.6 L334.5,295.8 L324.8,298.9 L322.6,292.0 L324.8,298.9 L326.5,298.6 L334.5,295.8 L335.1,293.8 L333.6,293.1 L340.9,293.2 L357.1,287.1 L369.4,276.8 L379.8,276.1 L380.2,272.9 L374.7,272.2 L376.7,277.6 L384.1,274.5 L384.9,266.3 L381.6,256.5 L381.7,249.3 L370.2,228.2 L369.3,219.0 L367.3,218.6 L358.6,205.1 L354.3,208.7 L350.1,204.1 L340.7,198.7", "M340.8,198.8 L349.1,195.8 L363.0,210.3 L367.4,218.4 L369.9,219.3 L370.0,227.6 L381.7,249.3 L385.1,275.4 L401.5,272.7 L411.4,276.4 L418.4,273.2 L423.3,273.4 L425.6,269.3 L424.2,268.5 L425.6,261.6 L434.6,247.7 L437.0,248.8 L439.2,246.2 L438.1,249.1 L440.0,252.6 L445.4,254.5 L444.7,259.2 L443.1,258.7 L444.4,268.4 L443.0,270.7 L448.3,273.3 L450.6,276.8 L449.3,282.1 L457.6,282.2 L462.0,287.0 L468.6,289.4 L478.4,286.9 L484.4,287.9 L486.9,289.8 L489.4,296.3 L499.0,305.1 L525.1,298.5 L535.5,306.6 L540.4,307.2 L543.7,311.9 L551.2,312.2 L558.8,314.6 L562.0,317.4 L587.7,323.7 L595.0,319.8 L599.1,321.3 L604.8,320.4 L612.1,327.2 L613.6,334.1 L611.4,338.6 L614.0,343.6 L617.1,345.6 L619.4,345.7 L626.9,340.2 L641.3,335.4 L652.6,338.2 L661.9,335.4 L672.5,319.4 L689.5,314.0 L698.0,297.3 L704.0,294.4 L706.9,295.1 L709.8,301.1 L711.1,300.7 L709.4,300.4 L709.5,303.8 L706.0,304.4 L709.0,308.4 L706.8,309.3 L710.2,312.2 L712.8,309.6 L718.0,308.4 L717.7,311.2 L719.8,313.9 L724.3,314.0 L725.6,324.2 L723.6,325.1", "M724.5,324.7 L723.5,322.7 L715.2,323.0 L712.8,320.6 L712.1,321.9 L708.3,320.1 L708.6,322.5 L706.4,324.1 L707.4,325.4 L704.4,326.1 L703.0,329.1 L694.8,329.7 L692.7,326.9 L690.8,329.9 L682.3,333.2 L682.1,331.2 L681.3,334.2 L681.3,332.4 L677.0,329.3 L675.0,330.1 L677.3,330.5 L672.5,332.1 L671.9,330.7 L666.1,331.0 L663.5,332.5 L665.2,332.9", "M665.2,332.9 L652.8,338.3 L640.9,335.6 L626.9,340.2 L619.7,345.0 L620.4,347.0 L617.5,352.6 L620.5,357.4 L623.3,367.9 L622.3,369.2 L623.9,367.7 L626.2,370.5 L624.1,381.0 L628.1,392.8 L624.4,398.5 L627.1,400.2 L617.4,402.9 L616.4,405.6 L615.1,405.1 L614.2,406.5 L616.8,407.2 L613.7,408.2 L616.4,408.8 L615.9,411.5 L607.3,421.0 L604.2,431.5 L600.3,433.1 L601.2,437.6 L596.3,442.2 L587.1,438.9 L582.0,439.9 L577.0,443.4 L572.8,442.5 L572.1,443.6 L570.3,439.2 L569.4,444.3 L570.7,447.2 L569.5,447.2 L568.2,452.4 L565.9,452.6 L563.9,455.3 L571.1,461.1 L576.7,469.3 L575.0,473.2 L569.0,475.0 L577.9,479.7 L577.5,481.1 L576.9,478.6 L570.4,479.7 L565.5,484.0 L563.6,488.0 L566.7,490.5 L564.5,491.9 L568.8,491.1 L573.5,494.0 L577.0,493.6 L573.1,494.2 L568.7,491.1 L565.4,491.4 L568.8,491.1 L571.8,493.2 L571.5,498.2 L565.8,500.2 L562.1,504.9 L563.7,504.9 L561.8,505.6 L564.6,505.4 L564.4,507.0 L568.6,508.3 L573.7,513.8 L585.5,516.7 L593.7,515.8 L594.9,510.8 L605.9,500.6 L607.5,495.7 L605.7,494.1 L609.0,494.1 L607.2,493.2 L606.7,486.6 L604.4,482.9 L601.7,482.2 L600.7,484.1 L598.1,483.3 L597.6,480.5 L593.4,480.3 L592.4,477.1 L594.6,473.0 L585.4,471.9 L585.1,473.8", "M585.1,473.8 L585.4,471.9 L594.6,473.0 L592.4,477.2 L593.4,480.3 L597.6,480.5 L598.0,483.3 L600.7,484.1 L601.6,482.3 L604.4,482.9 L606.7,486.6 L607.2,493.2 L609.8,495.5 L622.8,496.9 L622.7,499.5 L625.5,499.5 L629.1,503.6 L633.3,512.0 L633.2,516.8 L630.1,523.0 L626.7,525.7 L628.4,527.3 L626.6,530.6 L627.1,534.5 L633.0,542.8 L636.3,538.7 L640.4,538.3 L645.1,538.8 L649.6,542.8 L653.3,542.5 L652.4,556.0 L650.7,560.2 L654.3,562.7 L653.1,568.8 L651.8,565.6 L649.9,565.4 L648.0,567.6 L645.6,565.8 L634.8,570.6 L632.7,574.3 L631.8,572.3 L627.3,571.2 L618.9,577.9 L615.1,575.9 L613.2,577.6 L608.9,573.1 L604.1,575.6 L604.3,577.1 L599.8,575.8 L597.1,577.7 L589.8,571.8 L583.1,571.5 L576.7,574.6 L563.0,575.6 L561.8,578.1 L557.7,578.9 L552.1,577.9 L551.2,575.3 L543.9,573.9 L543.8,571.3 L538.7,569.4 L537.2,565.3 L527.8,557.0 L512.0,554.3 L497.2,547.3 L487.6,554.1 L482.7,555.3 L475.4,547.7 L472.0,546.3 L474.3,535.6 L472.3,531.0 L454.0,532.6 L443.9,524.5 L442.5,526.0 L444.7,523.4 L441.9,522.9 L439.4,513.9 L442.1,505.4 L439.7,501.8 L432.0,499.2 L427.6,495.2 L433.4,499.8 L434.1,504.3 L438.4,504.9 L429.6,522.4 L430.2,529.8 L432.3,531.2 L436.6,530.5 L436.3,532.4 L437.3,532.0", "M437.2,531.8 L403.1,541.6 L325.1,541.2 L310.6,523.0 L289.4,504.0 L250.6,501.9 L211.8,510.4 L151.8,548.3 L144.0,558.7 L146.2,559.3 L145.5,557.4 L150.3,552.1 L149.0,551.5 L149.0,548.0 L146.1,548.9 L145.4,546.8 L143.0,547.6 L140.5,543.8 L140.8,547.4 L140.6,543.8 L143.0,547.6 L144.8,546.7 L146.1,548.9 L146.4,547.7 L151.3,549.9 L152.5,549.0 L148.9,547.5 L146.9,544.3 L145.4,536.9 L149.0,547.5 L148.5,554.4", "M148.5,554.4 L149.2,552.2 L151.6,554.9 L160.4,557.5 L168.3,547.9 L172.0,535.6 L180.8,529.6 L186.3,519.8 L195.5,517.4 L198.1,514.2 L197.3,504.4 L194.4,500.7 L192.0,490.9 L187.4,486.0 L183.4,470.6 L179.8,465.0 L180.9,459.7 L179.4,455.8 L180.0,449.2 L176.8,443.8 L177.6,439.2 L168.0,426.7 L170.3,417.6 L180.3,406.8 L185.3,395.6 L185.8,397.4 L186.1,393.4 L194.5,374.6 L200.7,371.8 L199.6,366.3 L202.1,365.7 L200.8,361.9 L210.5,355.9 L212.4,346.7 L225.6,330.2 L232.9,327.5 L240.4,321.5 L250.3,321.7 L265.0,312.4 L278.8,313.1 L292.3,307.7 L289.9,306.9 L284.4,298.5 L281.8,298.0 L281.7,294.7 L285.0,287.4 L284.0,282.3 L289.7,276.9 L290.3,269.9 L292.6,266.7 L292.1,260.9 L287.4,258.0 L291.4,252.9 L291.3,247.6 L295.8,241.4 L298.5,235.3 L296.9,234.6 L299.0,232.6 L296.6,228.1 L290.4,225.1 L286.3,218.3 L272.9,223.7 L275.1,234.4 L272.7,227.4 L274.4,222.8 L271.2,210.5 L274.8,207.8 L271.4,201.6 L269.2,200.8 L270.6,197.8 L266.5,194.9 L266.1,186.7 L262.0,181.0 L259.9,180.6 L259.3,176.7 L268.3,168.8 L272.3,170.9 L274.9,173.6 L273.2,176.0 L276.1,183.3 L283.8,188.5 L287.0,188.7 L287.6,194.7 L291.2,198.1 L301.6,197.3 L305.0,195.8 L305.6,192.3 L307.7,191.5", "M307.7,191.5 L313.1,197.4 L316.5,192.6 L323.9,189.6 L332.5,189.6 L334.9,195.0 L339.1,193.1 L337.3,192.3 L338.9,189.1 L337.9,186.6 L331.3,189.9 L325.6,189.8 L319.4,194.9 L312.7,195.0 L307.7,191.5", "M307.7,191.5 L312.9,195.1 L322.4,193.5 L323.5,194.8 L328.8,194.4 L329.1,196.5 L328.7,194.3"], "coast": "M536.5,42.2 L547.1,80.1 L550.6,113.9 L564.7,139.2 L582.4,164.5 L603.5,181.4 L628.2,185.6 L677.6,202.5 L712.9,189.8 L741.2,164.5 L769.4,151.8 L804.7,177.2 L815.3,219.3 L797.6,257.3 L765.9,278.4 L734.1,291.0 L723.5,312.1 L727.1,329.0 L758.8,337.4 L794.1,333.2 L850.6,337.4 L843.5,371.2 L832.9,392.3 L861.2,413.4 L871.8,455.5 L854.1,493.5 L843.5,544.1 L801.2,603.2 L780.0,687.5 L780.0,696.0 L381.2,696.0 L398.8,653.8 L416.5,611.6 L412.9,577.9 L398.8,539.9 L388.2,506.2 L381.2,476.6 L349.4,442.9 L335.3,417.6 L324.7,379.6 L282.4,367.0 L243.5,388.0 L229.4,421.8 L257.6,451.3 L240.0,485.1 L229.4,497.7 L254.1,506.2 L292.9,501.9 L321.2,527.2 L321.2,561.0 L300.0,594.7 L264.7,611.6 L264.7,582.1 L268.2,552.5 L240.0,527.2 L211.8,523.0 L183.5,552.5 L151.8,586.3 L105.9,620.0 L120.0,586.3 L141.2,556.8 L123.5,535.7 L88.2,497.7 L67.1,459.8 L56.5,421.8 L81.2,388.0 L60.0,358.5 L35.3,316.3 L52.9,286.8 L95.3,291.0 L137.6,312.1 L144.7,274.2 L137.6,232.0 L158.8,210.9 L183.5,240.4 L204.7,244.6 L218.8,219.3 L236.5,198.2 L250.6,168.7 L278.8,181.4 L292.9,198.2 L314.1,194.0 L335.3,181.4 L342.4,164.5 L345.9,139.2 L360.0,113.9 L377.6,84.4 L409.4,67.5 L441.2,59.1 L469.4,46.4 L497.6,63.3 L522.4,46.4 Z", "amakusa": "M349.4,603.2 L335.3,632.7 L310.6,662.2 L264.7,674.9 L211.8,674.9 L204.7,653.8 L229.4,628.5 L271.8,611.6 L317.6,598.9 Z", "iki": "M88.2,88.6 L112.9,105.4 L109.4,135.0 L77.6,139.2 L67.1,113.9 Z", "honshu": "M497.6,-4.2 L504.7,25.3 L529.4,38.0 L554.1,29.5 L582.4,12.7 L617.6,-4.2 L900,0 L497.6,0 Z", "pts": {"fuk": [335.3, 196.1], "mar": [308.2, 191.5], "moji": [534.0, 43.9], "kok": [502.6, 70.0], "sara": [475.4, 85.2], "daz": [382.9, 223.1], "tosu": [374.8, 271.6], "aki": [439.4, 246.3], "bep": [723.5, 324.8], "yuf": [674.1, 330.7], "koko": [626.8, 369.9], "dkb": [570.7, 444.6], "kusa": [565.8, 492.7], "kami": [603.2, 504.5], "aso": [585.2, 474.1], "tak": [653.3, 569.0], "kum": [444.0, 526.0], "kport": [403.1, 541.6], "shim": [325.1, 541.2], "nag": [149.3, 550.4], "mif": [200.5, 366.1], "rai": [274.9, 234.5], "fut": [263.3, 172.9], "apt": [352.9, 195.8]}, "ferry": "M403.1,541.6 L325.0,541.1", "k": 421.79281644029663};
+
+/* 地图节点  la = 标签方位 l/r/t/b */
+var NODES = {
+  fuk:{n:'福冈市区', la:'r'}, mar:{n:'Marinoa', la:'l'}, fut:{n:'樱井二见浦', la:'t'}, rai:{n:'雷山千如寺', la:'l'},
+  moji:{n:'门司港', la:'r'}, kok:{n:'小仓城', la:'r'}, sara:{n:'皿仓山', la:'l'},
+  daz:{n:'太宰府', la:'r'}, tosu:{n:'鸟栖', la:'l'}, aki:{n:'秋月', la:'r'},
+  bep:{n:'别府', la:'r'}, yuf:{n:'由布院', la:'b'}, koko:{n:'九重梦大吊桥', la:'l'},
+  dkb:{n:'大观峰', la:'l'}, aso:{n:'阿苏', la:'r'}, kusa:{n:'草千里', la:'l'}, kami:{n:'上色见熊野座', la:'r'},
+  tak:{n:'高千穗峡', la:'r'}, kum:{n:'熊本', la:'t'}, kport:{n:'熊本港', la:'b'}, shim:{n:'岛原港', la:'b'},
+  nag:{n:'长崎', la:'b'}, mif:{n:'御船山 · 武雄', la:'r'}
+};
+var BEDS = [['fuk','3 晚'],['bep','1 晚'],['yuf','1 晚'],['aso','1 晚'],['kum','1 晚'],['nag','1 晚'],['mar','2 晚']];
+var DAYNODES = [
+  ['fuk'],['fuk','moji','kok','sara'],['fuk','daz','tosu'],['fuk','aki','bep'],['bep','yuf'],
+  ['yuf','koko','dkb','aso','kusa','kami'],['aso','tak','kum'],['kum','kport','shim','nag'],
+  ['nag','mif','rai','fut','mar'],['mar','fuk'],['mar','fuk']
+];
+
+/* =========================================================
+   核对
+   ========================================================= */
+var CHECK = [
+  { lv:'🔴', t:'九年庵（12/12）当天不开放', d:3,
+    w:'九年庵只在秋季公开，<b>2026 年为 11/14–11/29</b>（另有春季少数几天）。12/12 一定是关的，trip.com 也显示「Temporarily closed」。<br>👉 已换成太宰府旁边的<b>九州国立博物馆</b>（周一休，周六有开），后面鸟栖与 ν 高达照旧。' },
+  { lv:'🔴', t:'阿苏中岳火口（12/15）目前封闭', d:6,
+    w:'气象厅 11/6 第 31 号解说情报：阿苏山<b>噴火警戒 Level 2（火口周辺規制）</b>，中岳第一火口约 1 km 内禁止进入；8 月曾升到 Level 3。火口见学与接驳巴士暂停中。<br>👉 改看<b>草千里 + 阿苏火山博物馆</b>；大观峰、阿苏神社、上色见熊野座都在规制范围外，正常。' },
+  { lv:'🔴', t:'吉次园（12/16）拿掉', d:7,
+    w:'它是植木町的观光果园，<b>草莓狩 12 月下旬才开始</b>，而且 17:00 关门。排在高千穗 → 熊本城后面不可能赶上，也很可能没得采。' },
+  { lv:'🟠', t:'由布院 Rakuten STAY VILLA（12/14）没有「已订」标记', d:5,
+    w:'trip.com 上另外 6 间都显示 Booked 并有入住日期，<b>只有这间两样都没有</b>。请确认订单；它是自助入住，也要确认收到房门密码。' },
+  { lv:'🟠', t:'去程航班不在行程里', d:1,
+    w:'trip.com 里只有回程 PR425 / PR529。去程落地时间决定 12/10 能做什么，<b>发截图给我</b>。' },
+  { lv:'🟠', t:'租车：12 月雪胎 + 5 人行李', d:2,
+    w:'还没看到租车订单。两个硬条件：<br>① <b>雪胎（スタッドレスタイヤ）</b>——12/15 的やまなみハイウェイ、九重、阿苏、12/16 往高千穗都是 800–1,100 米山路，12 月早晚会结冰。<br>② <b>5 人 + 11 天行李，一般 5 人座轿车放不下</b>。要 <b>8 人座 minivan</b>（Noah / Voxy / Serena 这一级），收起第三排 = 5 人座 + 后面放箱子。<br>这两样 12 月都抢手，越早订越好。' },
+  { lv:'🟠', t:'高千穗峡划船（12/16）要网上预约，而且要 2 艘', d:7,
+    w:'每艘最多 3 人。预约窗口是<b>乘船日前 2 周到前 2 天 09:00</b> → <b>12/2 09:00 开放</b>。当天现场名额很少。' },
+  { lv:'🟠', t:'熊本港 → 岛原 渡轮（12/17）车位', d:8,
+    w:'Ocean Arrow 9:25 那班约 30 分钟，建议<b>先预约车位</b>。备案是九商フェリー（约 60 分钟）。' },
+  { lv:'🟠', t:'teamLab Forest（12/19 周六）要先买票', d:10,
+    w:'周六指定时段可能售完，而且不少平台的票不能退改——<b>行程确定后再买</b>。' },
+  { lv:'🟡', t:'trip.com 的顺序我改了三处', d:0,
+    w:'① 12/13 <b>十文字原</b>是夜景点，从中午移到晚上；地狱巡礼（17:00 关）提到下午先做。<br>② 12/16 <b>熊本城</b>（最后入园约 16:00）排在熊本熊广场（开到 19:00）之前。<br>③ 12/17 <b>原爆资料馆</b>（17:00 停止入馆）提到中午，<b>稻佐山</b>移到晚上看夜景。' },
+  { lv:'🟡', t:'熊本城：2026 年 7 月熊本地震后 8/13 才重开', d:7,
+    w:'开放区域与时间可能和以前不同，当天出发前看一次官网。阿苏市与南阿苏的观光设施与道路，当地观光协会表示没有大的损坏。' },
+  { lv:'🟡', t:'12/11 是最累的一天', d:2,
+    w:'开车约 3 小时 50 分，21:20 才回到酒店，还是自驾第一天、最后一段是夜间高速。<b>司机轮换</b>；累的话把 Outlet 砍掉，直接上皿仓山。' },
+  { lv:'🟡', t:'亀の井ホテル 阿苏（12/15）入住只到 18:00', d:6,
+    w:'行程排 16:40 到，有余裕；但那天山路多，任何延误都留意这个时限，会晚就先打电话。' },
+  { lv:'🟡', t:'周末人潮', d:3,
+    w:'12/12（六）太宰府与鸟栖 Outlet、12/19（六）天神与 teamLab 都会很挤，停车要多留时间。<b>12/10–12/20 没有日本国定假日</b>（最近的是 12/23），没有连假售罄风险。' },
+  { lv:'🟡', t:'天黑得早：日落约 17:05–17:20', d:0,
+    w:'每天户外行程我都压在 17:00 前，日落后才去的只有夜景点（皿仓山、福冈塔、十文字原、稻佐山）。' },
+  { lv:'🟢', t:'开车时长都合理', d:0,
+    w:'每天开车 45 分钟到 3 小时 50 分，没有一天超过 4 小时；最长的一段是秋月 → 别府约 1 小时 30 分。逐日行程每天标题下都写了当天总开车时间。' },
+  { lv:'🟢', t:'其他闭馆日查过都没撞到', d:0,
+    w:'皿仓山缆车周二停（12/11 是周五）· 九州国立博物馆周一休（12/12 是周六）· 原爆资料馆、熊本城年末才休 · 九重梦大吊桥、雷山千如寺、别府地狱无休 · 御船山乐园 12/6 后转一般期，照常开。' },
+  { lv:'🟢', t:'需要预约的免费景点：这趟没有', d:0,
+    w:'免费的（太宰府、大观峰、草千里、上色见熊野座、平和公园、二见浦、栉田神社、福冈城迹）都不用预约。要预约的都是收费项目：高千穗划船、渡轮、teamLab。' }
+];
+
+/* 待办 */
+var TODO = [
+  { h:'出发前 · 一定要做', items:[
+    '<b>发去程机票截图</b>给我——行程里还没有去程，12/10 要按落地时间重排。',
+    '<b>发租车订单截图</b>；还没订的话现在就订：<b>8 人座 minivan + 雪胎（スタッドレスタイヤ）+ ETC 卡</b>，12/11 博多站周边取、12/20 福冈机场周边还。',
+    '<b>国际驾照 IDP</b>：每个会开车的人都要，向 JPJ 申请（马来西亚发的是日本认可的 1949 日内瓦公约版）。取车时要同时出示 <b>IDP + 马来西亚实体驾照 + 护照</b>，三样缺一不可；P 牌驾照不能申请。',
+    '<b>确认由布院 Rakuten STAY VILLA（12/14）真的订了</b>，并确认收到自助入住的房门密码。',
+    '<b>12/2 09:00 起</b>预约高千穗峡划船：12/16 09:00 左右的时段，<b>2 艘</b>。',
+    '预约 <b>12/17 Ocean Arrow 9:25 熊本港 → 岛原港</b>（车 1 台 + 5 人）。',
+    '买 <b>12/19 teamLab Forest 福冈</b>的票（5 人，10:00 时段）。',
+    '问 <b>SG Hotel Kinshai Hakata 有没有停车位</b>（12/11、12/12 两晚要停）；问 <b>亀の井ホテル 阿苏</b>停车要不要事先登记。',
+    '护照效期确认；<b>Visit Japan Web</b> 先登记入境与海关资料（非强制，但入境快很多）。',
+    '订日本上网方案（eSIM 或网卡）。5 个人至少两支手机能上网，导航与查路况分开。',
+    '换日元现金：屋台、牡蛎小屋、温泉、神社、小店很多只收现金，建议每人先带 ¥30,000 左右。',
+    '打包：厚外套、毛帽手套（阿苏、九重、皿仓山山顶会到 0°C 上下）、好走防滑的鞋、日本插头转接头（A 型两脚扁插，100V）。'
+  ]},
+  { h:'取车时 · 当场确认', items:[
+    '雪胎有没有装、车上有没有链条。',
+    'ETC 卡插好；<b>KEP 九州高速周游券</b>只能在租车柜台买，问它涵盖几天、包不包福冈／北九州都市高速，跟实际过路费比一下再决定。',
+    '车内导航切英文；日本车导航可以<b>输入电话号码</b>直接找地点，这页每间酒店都有电话。',
+    '加什么油（多数是レギュラー）、还车要满油。'
+  ]},
+  { h:'行程中 · 有时限的事', items:[
+    '<b>12/14 晚上</b>查阿苏山噴火警戒等级与火口规制（气象厅、阿苏火山防災会議協議会）。',
+    '<b>12/15 18:00 前</b>入住亀の井ホテル 阿苏。',
+    '<b>12/16 早上</b>看熊本城官网的开放时间；看熊本熊广场当天出场时间。',
+    '<b>12/17 早上</b>看长崎缆车运行状况（停驶就直接开车上稻佐山）。',
+    '<b>12/19 晚上</b>收好行李；<b>12/20 11:30</b> 加满油，12:00 还车。'
+  ]}
+];
+
+/* 贴士 */
+var TIPS = [
+  { t:'在日本开车', kind:'list', items:[
+    '<b>靠左行驶、右驾</b>，和马来西亚一样，不用重新适应方向。',
+    '<b>酒驾零容忍</b>：呼气酒精 0.15 mg/L 就违法，<b>同车乘客、借车给你的人也会被罚</b>。司机当天一滴都不喝。',
+    '红色倒三角「止まれ」= <b>完全停下</b>再走；<b>铁路平交道一律先停</b>、看左右再过，被抓很常见。',
+    '速限：一般道路多为 40–60 km/h，高速多为 80–100 km/h。测速照相很多。',
+    '加油站多是自助（セルフ），选「レギュラー」、「満タン」；也有人工加油站，说「レギュラー満タン」就好。',
+    '停车：市区用 Coin Parking，进场不收卡，离场在精算机付钱；景点停车场多数要现金。',
+    '<b>行人优先</b>：右转、左转时斑马线上有人一定要停，这是日本警察最常抓的。',
+    '出事故或车坏掉：先打 110（有人受伤加 119），再打租车公司的紧急电话；租车公司要警察出的事故证明才能走保险。'
+  ]},
+  { t:'冬季山路（12/13、12/15、12/16）', kind:'list', items:[
+    '<b>やまなみハイウェイ（由布院 → 九重 → 阿苏）</b>与阿苏外轮山海拔 800–1,100 米，12 月早晚常有路面结冰、起雾，偶尔下雪。',
+    '<b>雪胎是必须</b>；有「冬用タイヤ規制」时没雪胎不能上路，「チェーン規制」时连雪胎也要加链条。',
+    '最危险的是<b>桥面、隧道出口、背阴弯道</b>，看起来湿亮的地方可能是黑冰。慢开、不急刹、不急转。',
+    '出发前看 <b>JARTIC 日本道路交通情报</b> 或 NEXCO 西日本 的冬季道路资讯。',
+    '天黑后尽量不开山路：12/15 排 16:40 进酒店，就是为了避开天黑后的阿苏。'
+  ]},
+  { t:'高速公路与 ETC', kind:'list', items:[
+    '日本高速要收费，<b>插 ETC 卡走紫色「ETC」车道</b>，不用停车；没卡走「一般」车道付现金。',
+    '<b>KEP 九州高速周游券</b>：外国人租车专用、柜台购买，2 天 ¥6,200 起，最长 10 天。<b>2027/3/31 停售</b>，你们这趟还能买。',
+    '这趟的高速主要集中在 12/11（北九州）、12/13（往别府）、12/17–12/18（长崎道），其他几天多是一般道路，算一下哪个划算。'
+  ]},
+  { t:'天气与穿着（12 月中的九州）', kind:'list', items:[
+    '福冈、长崎、熊本市区：白天约 <b>10–14°C</b>、早晚 <b>3–7°C</b>。',
+    '<b>阿苏、九重、由布院早上会到 0°C 以下</b>，可能下雪；皿仓山、稻佐山山顶风很大。',
+    '洋葱式穿法：保暖内衣 + 毛衣 + 防风外套；户外多的那几天（12/11、12/15、12/16）要帽子手套。',
+    '冬天的九州<b>天黑得早</b>，日落约 17:05–17:20。'
+  ]},
+  { t:'温泉礼仪', kind:'list', items:[
+    '进池前<b>先在淋浴区把身体洗干净</b>；毛巾不要放进池子里，可以放头上。',
+    '大浴场是<b>全裸</b>，不能穿泳衣；长发要绑起来。',
+    '很多公共浴场<b>不接受刺青</b>，有刺青的话找贴纸遮或选私人汤（貸切風呂）。',
+    '泡完不要马上冲掉；喝水，别泡太久（42°C 以上的池子 10 分钟就够）。'
+  ]},
+  { t:'钱与付款', kind:'list', items:[
+    '<b>7-Eleven 的 ATM</b> 可以用马来西亚的卡提日元（要先开通海外提款）。',
+    '屋台、牡蛎小屋、竹瓦温泉、神社、景点停车场、小吃摊多半只收现金。',
+    '超市、便利店、商场与 Outlet 可刷卡；<b>免税在 2026/11/1 起改成「退税制」</b>：在免税店先付含税价、出示护照登记，<b>出境时在福冈机场的税关端末刷护照确认</b>后才退税。吃的、化妆品在日本用掉了就退不到；退款方式与手续费看各店。',
+    '交通 IC 卡：九州的 はやかけん／SUGOCA，或 iPhone 里的 Suica 都通用，坐地铁、便利店都能刷。'
+  ]},
+  { t:'5 个人一起走', kind:'list', items:[
+    '<b>日本出租车最多载 4 人</b>：5 个人要叫两台，或叫 Jumbo Taxi。',
+    '餐厅 5 人位比较难排，<b>晚餐尽量先订</b>（Google 地图上很多店可以直接订）；屋台与牡蛎小屋可以分两组坐。',
+    '开车的人轮换：建议至少 2–3 个人有 IDP，<b>每 2 小时换一次手</b>，长途日（12/11、12/13、12/15、12/18）尤其要。',
+    '副驾负责看导航与路标，后座负责查停车场与营业时间。'
+  ]},
+  { t:'时差与手机', kind:'list', items:[
+    '<b>日本比马来西亚快 1 小时</b>（日本 UTC+9，马来西亚 UTC+8）。手机会自动切换；这一页上方的倒计时已经自动换算你所在的时区。',
+    '回程 12/20 在马尼拉转机后时区就回到 UTC+8，页面上那几段已另外标明。',
+    '日本电压 100V、插头是 A 型（两脚扁插），马来西亚的 G 型插头要转接头；手机与相机充电器一般支持 100–240V。'
+  ]},
+  { t:'安全与紧急', kind:'phone', items:[
+    ['警察','110'],['火警 / 救护车','119'],
+    ['JNTO 访日外国人热线（24 小时，有英文）','050-3816-2787'],
+    ['JAF 道路救援','#8139'],
+    ['马来西亚驻日本大使馆（东京）','+81-3-3476-3840'],
+    ['SG Hotel Kinshai Hakata', H.hkt.tel],
+    ['AMANEK 别府 YULA-RE', H.bep.tel],
+    ['Rakuten STAY VILLA 由布院', H.yuf.tel],
+    ['亀の井ホテル 阿苏', H.aso.tel],
+    ['The Blossom Kumamoto', H.kum.tel],
+    ['Fav LUX 长崎', H.ngs.tel],
+    ['Hotel Marinoa Resort Fukuoka', H.mar.tel]
+  ]},
+  { t:'跟店员沟通 · 存在手机里', kind:'quote', html:
+    '<div class="quote"><small>停车 · 问哪里可以停</small>すみません、車をどこに停めればいいですか？<br><span style="font-size:12px;color:var(--ink3)">不好意思，车要停在哪里？</span></div>'+
+    '<div class="quote"><small>餐厅 · 5 个人</small>5人ですが、席はありますか？<br><span style="font-size:12px;color:var(--ink3)">我们 5 个人，有位子吗？</span></div>'+
+    '<div class="quote"><small>加油站</small>レギュラー満タンでお願いします。<br><span style="font-size:12px;color:var(--ink3)">普通汽油，加满。</span></div>'+
+    '<div class="quote"><small>还车</small>車を返しに来ました。ガソリンは満タンです。<br><span style="font-size:12px;color:var(--ink3)">我来还车，油加满了。</span></div>' }
+];
+
+/* =========================================================
+   渲染
+   ========================================================= */
+function esc(s){ return String(s).replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];}); }
+function at(dateStr, timeStr, tz){ return new Date(dateStr + 'T' + timeStr + ':00' + (tz || '+09:00')); }
+function pad(n){ return n<10 ? '0'+n : ''+n; }
+var NS='http://www.w3.org/2000/svg';
+function el(t,a,txt){ var e=document.createElementNS(NS,t); for(var k in a) e.setAttribute(k,a[k]); if(txt!=null) e.textContent=txt; return e; }
+
+/* ---- 分页 ---- */
+var TABS = [
+  ['days','📅','行程'], ['map','🗺','地图'], ['booked','🎫','订位'],
+  ['check','⚠️','核对'], ['todo','✅','待办'], ['tips','💡','贴士']
+];
+var UI = (function(){
+  var tabsEl=document.getElementById('tabs'), curDay=1;
+  var nCheck = CHECK.filter(function(c){ return c.lv==='🔴' || c.lv==='🟠'; }).length;
+  TABS.forEach(function(t){
+    var b=document.createElement('button');
+    b.className='tab'; b.type='button'; b.setAttribute('role','tab');
+    b.setAttribute('aria-selected','false'); b.dataset.tab=t[0];
+    b.innerHTML='<span aria-hidden="true">'+t[1]+'</span>'+t[2]+(t[0]==='check'&&nCheck?'<span class="cnt">'+nCheck+'</span>':'');
+    b.addEventListener('click',function(){ if(history.replaceState) history.replaceState(null,'','#'+t[0]); show(t[0], true); });
+    tabsEl.appendChild(b);
+  });
+  function barH(){ return document.querySelector('.bar').offsetHeight; }
+  function scrollToEl(e){ if(e) window.scrollTo({top:Math.max(0, e.getBoundingClientRect().top + window.scrollY - barH() - 8), behavior:'smooth'}); }
+  function show(id, scroll){
+    if(!TABS.some(function(t){return t[0]===id;})) id='days';
+    [].forEach.call(document.querySelectorAll('.panel'),function(p){ p.classList.toggle('on', p.dataset.tab===id); });
+    [].forEach.call(tabsEl.children,function(b){
+      b.setAttribute('aria-selected', b.dataset.tab===id ? 'true':'false');
+      if(b.dataset.tab===id && b.scrollIntoView) b.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+    });
+    if(scroll) scrollToEl(document.querySelector('.panel.on'));
+  }
+  function showDay(n, scroll){
+    n = Math.min(DAYS.length, Math.max(1, n|0));
+    curDay = n;
+    [].forEach.call(document.querySelectorAll('article.day'),function(a){ a.classList.toggle('on', a.id === 'd'+n); });
+    var dp=document.getElementById('dpick');
+    if(dp) [].forEach.call(dp.children,function(b,i){
+      b.setAttribute('aria-pressed', (i+1)===n ? 'true':'false');
+    });
+    if(scroll) scrollToEl(document.getElementById('d'+n));
+  }
+  function route(hash, scroll){
+    hash=(hash||'').replace(/^#/,'');
+    if(!hash){ show('days', false); return; }
+    var m=hash.match(/^d(\d+)$/);
+    if(m){ show('days', false); showDay(+m[1], scroll!==false); return; }
+    if(TABS.some(function(t){return t[0]===hash;})){ show(hash, scroll!==false); return; }
+    var e=document.getElementById(hash);
+    if(e){ var p=e.closest('.panel'); if(p) show(p.dataset.tab, false); scrollToEl(e); }
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a) return;
+    var h=a.getAttribute('href');
+    if(h==='#'||h.length<2) return;
+    e.preventDefault();
+    if(history.replaceState) history.replaceState(null,'',h);
+    route(h, true);
+  });
+  window.addEventListener('hashchange',function(){ route(location.hash, true); });
+  return { show:show, showDay:showDay, route:route };
+})();
+
+/* ---- 总览地图 ---- */
+(function(){
+  var land=document.getElementById('mapLand'), deco=document.getElementById('mapDeco'),
+      routesEl=document.getElementById('mapRoutes'), nodesEl=document.getElementById('mapNodes'),
+      legend=document.getElementById('legend');
+  var g=el('g',{filter:'url(#rough)'});
+  [GEO.coast, GEO.amakusa, GEO.iki, GEO.honshu].forEach(function(d){
+    g.appendChild(el('path',{d:d, fill:'var(--land)', stroke:'var(--ink3)', 'stroke-width':'1.8', 'stroke-linejoin':'round', opacity:'1'}));
+  });
+  land.appendChild(g);
+  // 海浪
+  var wv=el('g',{filter:'url(#rough2)', fill:'none', stroke:'var(--ink3)', 'stroke-width':'1.3', 'stroke-linecap':'round', opacity:'.45'});
+  [[150,90],[230,60],[600,150],[700,90],[60,420],[90,560],[810,250],[300,470],[200,620],[820,480]].forEach(function(p){
+    wv.appendChild(el('path',{d:'M'+p[0]+','+p[1]+' q12,-8 24,0 q12,8 24,0'}));
+  });
+  deco.appendChild(wv);
+  [['玄 界 滩',180,118],['周 防 滩',640,128],['有 明 海',250,455],['东 海',72,470],['别府湾',740,282],['天草',262,612],['壹岐',112,64],['本州',735,22]].forEach(function(s){
+    deco.appendChild(el('text',{x:s[1],y:s[2],'class':'mp-sea'},s[0]));
+  });
+  // 山
+  var mt=el('g',{filter:'url(#rough2)', fill:'none', stroke:'var(--ink3)', 'stroke-width':'1.8', 'stroke-linecap':'round', opacity:'.5'});
+  [[612,400],[636,392],[660,402],[286,532],[305,524],[420,300],[442,292]].forEach(function(p){ mt.appendChild(el('path',{d:'M'+(p[0]-11)+','+(p[1]+12)+' l11,-15 l11,15'})); });
+  mt.appendChild(el('ellipse',{cx:574,cy:476,rx:44,ry:52,'stroke-dasharray':'5 6'}));
+  deco.appendChild(mt);
+  deco.appendChild(el('text',{x:620,y:428,'class':'mp-lab-s'},'九重连山'));
+  deco.appendChild(el('text',{x:520,y:540,'class':'mp-lab-s'},'阿苏破火山口'));
+  deco.appendChild(el('text',{x:270,y:515,'class':'mp-lab-s'},'云仙'));
+
+  // 路线
+  GEO.routes.forEach(function(d,i){
+    var gr=el('g',{'data-day':i+1});
+    if(d) gr.appendChild(el('path',{d:d, stroke:'var('+DAYS[i].c+')', 'stroke-width':'3.2', opacity:'.9'}));
+    if(i===7) gr.appendChild(el('path',{d:GEO.ferry, stroke:'var(--ink2)', 'stroke-width':'2', 'stroke-dasharray':'2 6', opacity:'.9'}));
+    routesEl.appendChild(gr);
+  });
+  var ft=el('text',{x:332,y:528,'class':'mp-lab-s'},'⛴ 渡轮 30 分'); nodesEl.appendChild(ft);
+
+  // 节点
+  Object.keys(NODES).forEach(function(k){
+    var p=GEO.pts[k], o=NODES[k]; if(!p) return;
+    var gg=el('g',{});
+    gg.appendChild(el('circle',{cx:p[0],cy:p[1],r:4.8,fill:'var(--land)',stroke:'var(--ink)','stroke-width':'2'}));
+    var la=o.la||'r', lx=p[0], ly=p[1]+4, an='start';
+    if(la==='r'){ lx=p[0]+9; } else if(la==='l'){ lx=p[0]-9; an='end'; }
+    else if(la==='t'){ ly=p[1]-10; an='middle'; } else { ly=p[1]+19; an='middle'; }
+    gg.appendChild(el('text',{x:lx,y:ly,'class':'mp-lab','text-anchor':an},o.n));
+    nodesEl.appendChild(gg);
+  });
+  BEDS.forEach(function(b){
+    var p=GEO.pts[b[0]];
+    var off = {mar:[-10,34], kum:[14,18], fuk:[4,-16], aso:[8,-16], nag:[-8,-14], bep:[-4,-14], yuf:[-12,-14]}[b[0]] || [-6,-12];
+    var dx = off[0], dy = off[1];
+    nodesEl.appendChild(el('text',{x:p[0]+dx,y:p[1]+dy,'class':'mp-bed'},'🛏'));
+    nodesEl.appendChild(el('text',{x:p[0]+dx+16,y:p[1]+dy,'class':'mp-n'},b[1]));
+  });
+
+  // 图例
+  var active=0;
+  DAYS.forEach(function(d,i){
+    var b=document.createElement('button');
+    b.className='lg'; b.type='button'; b.style.setProperty('--c','var('+d.c+')');
+    b.setAttribute('aria-pressed','false');
+    b.innerHTML='<i></i>'+d.date.slice(5).replace('-','/');
+    b.addEventListener('click',function(){
+      active=(active===i+1)?0:i+1;
+      [].forEach.call(legend.children,function(x,j){ x.setAttribute('aria-pressed', active===j+1?'true':'false'); });
+      [].forEach.call(routesEl.children,function(gr){ gr.classList.toggle('dim', active!==0 && +gr.getAttribute('data-day')!==active); });
+    });
+    legend.appendChild(b);
+  });
+  var mz=document.getElementById('mapZoom'), ms=document.getElementById('mapScroll');
+  mz.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    [].forEach.call(mz.querySelectorAll('button'),function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+    var z=+b.dataset.z; ms.style.setProperty('--z', z);
+    ms.scrollLeft=(ms.scrollWidth-ms.clientWidth)/2; ms.scrollTop=0;
+  });
+  ms.style.maxHeight='78vh';
+})();
+
+/* ---- 已确认 ---- */
+(function(){
+  var box=document.getElementById('bookedBox'), h='';
+  h+='<div class="card"><div class="card-h"><div class="card-t">去程航班 <span class="b b-must">资料待补</span></div><div class="card-k">FLIGHT · 去</div></div>'+
+     '<div class="tip w" style="margin-top:8px">trip.com 行程里没有去程。把电子机票截图发我，我会填上航班、时间、航厦，并把 12/10 按落地时间重排。</div></div>';
+
+  h+='<div class="card"><div class="card-h"><div class="card-t">回程 · PR425 → PR529</div><div class="card-k">FLIGHT · 回</div></div>'+
+     '<div class="flightrow">'+
+       '<div class="fp"><div class="code">FUK</div><div class="tm">15:45<small>UTC+9</small></div><div class="pl">福冈机场<br>国际线航站楼</div></div>'+
+       '<div class="fmid">4 小时 05 分<div class="ln"></div>PR425</div>'+
+       '<div class="fp r"><div class="code">MNL</div><div class="tm">18:50<small>UTC+8</small></div><div class="pl">马尼拉<br>Ninoy Aquino 国际机场</div></div>'+
+     '</div>'+
+     '<div class="legsep">转机约 2 小时 30 分</div>'+
+     '<div class="flightrow">'+
+       '<div class="fp"><div class="code">MNL</div><div class="tm">21:20<small>UTC+8</small></div><div class="pl">马尼拉<br>Ninoy Aquino 国际机场</div></div>'+
+       '<div class="fmid">4 小时 00 分<div class="ln"></div>PR529</div>'+
+       '<div class="fp r"><div class="code">KUL</div><div class="tm">01:20<small>+1 天</small></div><div class="pl">吉隆坡国际机场<br>KLIA</div></div>'+
+     '</div>'+
+     '<dl class="kv"><dt>日期</dt><dd><b>2026 年 12 月 20 日（周日）</b>出发 · 12/21 凌晨抵达</dd>'+
+     '<dt>航空</dt><dd>菲律宾航空 Philippine Airlines</dd>'+
+     '<dt>人数</dt><dd>5 人</dd></dl>'+
+     '<div class="tip w" style="margin-top:10px">这两段是从 trip.com 行程读出来的，<b>还没看到出票截图</b>。发给我核对航厦与托运额度。</div></div>';
+
+  h+='<div class="card"><div class="card-h"><div class="card-t">租车 <span class="b b-must">资料待补</span></div><div class="card-k">CAR</div></div>'+
+     '<dl class="kv"><dt>建议取车</dt><dd><b>12/11（周五）08:00</b> · 博多站周边营业所</dd>'+
+     '<dt>建议还车</dt><dd><b>12/20（周日）12:00</b> · 福冈机场周边营业所（满油）</dd>'+
+     '<dt>车型</dt><dd><b>8 人座 minivan</b>（Noah / Voxy / Serena 级），5 人 + 行李</dd>'+
+     '<dt>必选</dt><dd>雪胎（スタッドレスタイヤ）· ETC 卡 · 可加购 KEP</dd>'+
+     '<dt>证件</dt><dd>每位司机：IDP（1949 日内瓦公约版）+ 马来西亚实体驾照 + 护照</dd></dl>'+
+     '<div class="tip g" style="margin-top:10px">12/10 不取车：第一天只在博多市区，开车反而要多付一晚停车费。</div></div>';
+
+  var STAY=[
+    ['hkt','STAY 1','12 月 10 日（周四）','12 月 13 日（周日）11:00 前','3 晚'],
+    ['bep','STAY 2','12 月 13 日（周日）','12 月 14 日（周一）11:00 前','1 晚'],
+    ['yuf','STAY 3','12 月 14 日（周一）','12 月 15 日（周二）10:00 前','1 晚'],
+    ['aso','STAY 4','12 月 15 日（周二）<b>18:00 前</b>','12 月 16 日（周三）10:00 前','1 晚'],
+    ['kum','STAY 5','12 月 16 日（周三）','12 月 17 日（周四）11:00 前','1 晚'],
+    ['ngs','STAY 6','12 月 17 日（周四）','12 月 18 日（周五）10:00 前','1 晚'],
+    ['mar','STAY 7','12 月 18 日（周五）','12 月 20 日（周日）12:00 前','2 晚']
+  ];
+  STAY.forEach(function(s){
+    var o=H[s[0]], tel=o.tel.replace(/[^+0-9]/g,'');
+    var bad = s[0]==='yuf';
+    h+='<div class="card" id="stay-'+s[0]+'"><div class="card-h"><div class="card-t">'+o.name+' '+
+       (bad?'<span class="b b-bad">未见已订</span>':'<span class="b b-ok">已订</span>')+'</div><div class="card-k">'+s[1]+'</div></div>'+
+       '<dl class="kv">'+
+       '<dt>入住</dt><dd><b>'+s[2]+'</b></dd>'+
+       '<dt>退房</dt><dd><b>'+s[3]+'</b></dd>'+
+       '<dt>晚数</dt><dd>'+s[4]+'</dd>'+
+       '<dt>时间</dt><dd>'+o.io+'</dd>'+
+       '<dt>地址</dt><dd>'+o.addr+'<br><a class="nav" href="'+navUrl(o.q)+'" target="_blank" rel="noopener">开车导航到这里</a></dd>'+
+       '<dt>电话</dt><dd><a class="tel" href="tel:'+tel+'">'+o.tel+'</a></dd>'+
+       '<dt>停车</dt><dd>'+o.park+'</dd>'+
+       '<dt>位置</dt><dd>'+o.near+'</dd>'+
+       '</dl>'+
+       (bad?'<div class="tip w" style="margin-top:10px">trip.com 上这间<b>没有「Booked」标记，也没有入住日期</b>，其他 6 间都有。请确认订单。</div>':'')+
+       '</div>';
+  });
+
+  h+='<div class="card"><div class="card-h"><div class="card-t">门票与船票</div><div class="card-k">TICKETS</div></div>'+
+     '<p style="margin:8px 0 4px;font-size:13px;color:var(--ink2)">目前<b>还没有任何一张已经买好</b>。这三样要事先处理：</p>'+
+     '<dl class="kv">'+
+     '<dt>12/16</dt><dd>高千穗峡划船 · 09:00 左右 · <b>2 艘</b> · 12/2 09:00 开放预约 <a class="nav" href="#d7">看当天</a></dd>'+
+     '<dt>12/17</dt><dd>Ocean Arrow 熊本港 9:25 → 岛原港 · 车 1 台 + 5 人 <a class="nav" href="#d8">看当天</a></dd>'+
+     '<dt>12/19</dt><dd>teamLab Forest 福冈 · 10:00 · 5 人 <a class="nav" href="#d10">看当天</a></dd>'+
+     '</dl>'+
+     '<div class="tip" style="margin-top:8px">其他景点（皿仓山缆车、小仓城、地狱巡礼、九重梦大吊桥、熊本城、原爆资料馆、御船山乐园、千如寺）都是现场买票。</div></div>';
+
+  box.innerHTML=h;
+})();
+
+/* ---- 当日路线小地图 ---- */
+function dayMapSvg(idx){
+  var keys=DAYNODES[idx-1]||[], pts=keys.map(function(k){return GEO.pts[k];}).filter(Boolean);
+  if(!pts.length) return '';
+  var minx=1e9,miny=1e9,maxx=-1e9,maxy=-1e9;
+  pts.forEach(function(p){ minx=Math.min(minx,p[0]);miny=Math.min(miny,p[1]);maxx=Math.max(maxx,p[0]);maxy=Math.max(maxy,p[1]); });
+  var w=Math.max(maxx-minx,90), hh=Math.max(maxy-miny,60);
+  var cx=(minx+maxx)/2, cy=(miny+maxy)/2;
+  var vw=w*1.5, vh=Math.max(hh*1.5, vw*0.5); vw=Math.max(vw, vh*1.4);
+  var vb=[cx-vw/2, cy-vh/2, vw, vh].map(function(n){return n.toFixed(1);}).join(' ');
+  var sc=vw/330;
+  var s='<svg viewBox="'+vb+'" role="img" aria-label="当日路线示意">';
+  s+='<rect x="'+(cx-vw/2)+'" y="'+(cy-vh/2)+'" width="'+vw+'" height="'+vh+'" fill="var(--sea)"/>';
+  [GEO.coast,GEO.amakusa,GEO.iki,GEO.honshu].forEach(function(d){ s+='<path d="'+d+'" fill="var(--land)" stroke="var(--ink3)" stroke-width="'+(0.8*sc)+'"/>'; });
+  if(GEO.routes[idx-1]) s+='<path d="'+GEO.routes[idx-1]+'" fill="none" stroke="var('+DAYS[idx-1].c+')" stroke-width="'+(2.6*sc)+'" stroke-linecap="round" stroke-linejoin="round"/>';
+  if(idx===8) s+='<path d="'+GEO.ferry+'" fill="none" stroke="var(--ink2)" stroke-width="'+(1.6*sc)+'" stroke-dasharray="'+(2*sc)+' '+(4*sc)+'"/>';
+  keys.forEach(function(k){
+    var p=GEO.pts[k]; if(!p) return;
+    s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+(3.6*sc)+'" fill="var(--land)" stroke="var(--ink)" stroke-width="'+(1.4*sc)+'"/>';
+    s+='<text x="'+(p[0]+6*sc)+'" y="'+(p[1]+3.5*sc)+'" class="rm-lab" style="font-size:'+(11*sc)+'px;stroke-width:'+(3*sc)+'px">'+NODES[k].n+'</text>';
+  });
+  return s+'</svg>';
+}
+
+/* ---- 逐日 ---- */
+(function(){
+  var box=document.getElementById('dayBox'), html='';
+  DAYS.forEach(function(d,i){
+    var idx=i+1, c='var('+d.c+')', sl=d.sleep;
+    var hotel = sl.k ? H[sl.k] : null;
+    html+='<article class="day" id="d'+idx+'" style="--c:'+c+'">';
+    html+='<div class="day-h">'+
+      '<div class="day-n"><div class="dd">'+d.date.slice(5).replace('-','/')+'</div><div class="dw">'+d.dow+'</div><div class="dn">DAY '+idx+'</div></div>'+
+      '<div class="day-t"><h3>'+d.title+'</h3><p>'+d.sub+'</p>'+
+        '<div class="day-sleep">🛏 <span>今晚住：</span>'+
+          (hotel ? '<a class="nav" href="'+navUrl(hotel.q)+'" target="_blank" rel="noopener">'+hotel.name+'</a>' : '<span>'+sl.label+'</span>')+
+          (sl.move ? ' <span class="b b-must">今天换酒店</span>' : '')+
+          (sl.warn ? ' <span class="b b-bad">未见已订</span>' : '')+
+        '</div>'+
+        '<div class="day-drive">🚗 当天开车：'+d.drive+'</div>'+
+      '</div></div>';
+    html+='<div class="routebtns">'+
+      '<button class="rb" type="button" data-toggle="'+idx+'">🗺 当日路线</button>'+
+      (d.route && d.route.length>1 ? '<a class="rb primary" href="'+multiUrl(d.route.map(function(r){return r.q;}))+'" target="_blank" rel="noopener">🧭 全天多点导航</a>' : '')+
+      '</div>';
+    html+='<div class="routemap" id="rm'+idx+'"><div class="rmwrap">'+dayMapSvg(idx)+'<div class="strip"><div class="strip-in">';
+    d.route.forEach(function(r,j){
+      if(j) html+='<div class="link"><i></i></div>';
+      html+='<div class="stop"><div class="dot">'+(j+1)+'</div><div class="nm"><a class="nav" style="border:0" href="'+navUrl(r.q, d.rm)+'" target="_blank" rel="noopener">'+r.n+'</a></div></div>';
+    });
+    html+='</div></div></div></div>';
+
+    html+='<ol class="tl">';
+    d.items.forEach(function(it){
+      var badge='';
+      if(it.badge==='booked') badge=' <span class="b b-ok">已订</span>';
+      if(it.badge==='book')   badge=' <span class="b b-book">需提前订</span>';
+      if(it.badge==='must')   badge=' <span class="b b-must">必去</span>';
+      if(it.badge==='cash')   badge=' <span class="b b-cash">多收现金</span>';
+      var nm = it.q ? '<a class="nav" href="'+navUrl(it.q, it.m || d.rm)+'" target="_blank" rel="noopener">'+it.name+'</a>' : '<span>'+it.name+'</span>';
+      var tzTag = it.tz==='+08:00' ? '<em>UTC+8</em>' : '';
+      html+='<li'+(it.hi?' class="hi"':'')+'>'+
+        '<div class="t'+(it.free?' free':'')+'">'+(it.t || '弹性')+(it.nd?'<em>隔天</em>':'')+tzTag+'</div>'+
+        '<div class="body">'+
+          '<div class="nm2">'+(it.icon?it.icon+' ':'')+nm+badge+'</div>'+
+          (it.dr ? '<div class="drv">🚗 '+it.dr+'</div>' : '')+
+          (it.hours ? '<div class="hours">🕐 '+it.hours+'</div>' : '')+
+          (it.meta ? '<div class="meta">'+it.meta+'</div>' : '')+
+          (it.tipg ? '<div class="tip g">'+it.tipg+'</div>' : '')+
+          (it.tipw ? '<div class="tip w">'+it.tipw+'</div>' : '')+
+          (it.tipx ? '<div class="tip x">'+it.tipx+'</div>' : '')+
+        '</div></li>';
+    });
+    html+='</ol>';
+    html+='<div class="dnav">'+
+      (idx>1 ? '<a href="#d'+(idx-1)+'">← '+DAYS[idx-2].date.slice(5).replace('-','/')+'</a>' : '<a class="hid" href="#d1">←</a>')+
+      (idx<DAYS.length ? '<a href="#d'+(idx+1)+'">'+DAYS[idx].date.slice(5).replace('-','/')+' →</a>' : '<a class="hid" href="#d'+DAYS.length+'">→</a>')+
+      '</div>';
+    html+='</article>';
+  });
+  box.innerHTML=html;
+
+  var dp=document.getElementById('dpick');
+  DAYS.forEach(function(d,i){
+    var b=document.createElement('button');
+    b.className='dp'; b.type='button'; b.setAttribute('aria-pressed','false');
+    b.style.setProperty('--c','var('+d.c+')');
+    b.innerHTML=d.date.slice(5).replace('-','/')+'<small>'+d.dow+'</small>';
+    b.addEventListener('click',function(){
+      if(history.replaceState) history.replaceState(null,'','#d'+(i+1));
+      UI.showDay(i+1,false);
+    });
+    dp.appendChild(b);
+  });
+
+  box.addEventListener('click',function(e){
+    var b=e.target.closest('[data-toggle]'); if(!b) return;
+    var m=document.getElementById('rm'+b.getAttribute('data-toggle')); if(!m) return;
+    var open=m.classList.toggle('open');
+    b.textContent = open ? '🗺 收起路线' : '🗺 当日路线';
+  });
+})();
+
+/* ---- 核对 ---- */
+(function(){
+  var order={'🔴':0,'🟠':1,'🟡':2,'🟢':3};
+  var h='<div class="card">';
+  CHECK.slice().sort(function(a,b){return order[a.lv]-order[b.lv];}).forEach(function(c){
+    h+='<div class="ck"><div class="lv">'+c.lv+'</div><div class="ct">'+c.t+'</div><div class="cw">'+c.w+'</div>'+
+       (c.d ? '<div class="cj"><a href="#d'+c.d+'">→ 看 '+DAYS[c.d-1].date.slice(5).replace('-','/')+' 的行程</a></div>' : '')+'</div>';
+  });
+  h+='</div>';
+  h+='<div class="card"><div class="card-t" style="margin-bottom:6px">每天开车时间</div><div class="tblwrap"><table class="bt"><tr><th>日期</th><th class="n">开车</th><th>主要路段</th></tr>';
+  var seg=['市区不开车','博多 ⇄ 门司港 · 小仓 · 皿仓山','博多 → 太宰府 → 鸟栖 → ららぽーと','博多 → 秋月 → 别府','别府 → 由布院','由布院 → 九重 → 大观峰 → 阿苏','阿苏 → 高千穗 → 熊本','熊本 → 渡轮 → 岛原 → 长崎','长崎 → 武雄 → 糸岛 → 福冈西','Marinoa ⇄ 天神','Marinoa → 城迹 → 机场'];
+  DAYS.forEach(function(d,i){
+    h+='<tr><td>'+d.date.slice(5).replace('-','/')+' '+d.dow+'</td><td class="n">'+d.drive.replace(/<\/?b>/g,'').replace(/ · .*$/,'').replace('约 ','')+'</td><td>'+seg[i]+'</td></tr>';
+  });
+  h+='</table></div></div>';
+  document.getElementById('checkBox').innerHTML=h;
+})();
+
+/* ---- 待办 ---- */
+(function(){
+  var html='';
+  TODO.forEach(function(g){
+    html+='<div class="grp"><h4>'+g.h+'</h4><ul class="plain">';
+    g.items.forEach(function(s){ html+='<li>'+s+'</li>'; });
+    html+='</ul></div>';
+  });
+  document.getElementById('todoBox').innerHTML=html;
+})();
+
+/* ---- 贴士 ---- */
+(function(){
+  var html='';
+  TIPS.forEach(function(t){
+    html+='<div class="card"><div class="card-t" style="margin-bottom:4px">'+t.t+'</div>';
+    if(t.kind==='list'){
+      html+='<ul class="plain">'; t.items.forEach(function(s){ html+='<li>'+s+'</li>'; }); html+='</ul>';
+    } else if(t.kind==='phone'){
+      html+='<div class="phone-grid">';
+      t.items.forEach(function(p){
+        var tel=p[1].replace(/[^+#0-9]/g,'').replace('#','%23');
+        html+='<div><span>'+p[0]+'</span><a class="tel" href="tel:'+tel+'">'+p[1]+'</a></div>';
+      });
+      html+='</div>';
+    } else if(t.kind==='quote'){ html+=t.html; }
+    html+='</div>';
+  });
+  document.getElementById('tipBox').innerHTML=html;
+})();
+
+/* ---- 此刻关注 + 倒计时（时区安全：每个时间点都带时区） ---- */
+(function(){
+  var EV=[];
+  DAYS.forEach(function(d,i){
+    d.items.forEach(function(it){
+      if(!it.t || it.free) return;
+      var ts=at(d.date, it.t, it.tz).getTime();
+      if(it.nd) ts+=864e5;
+      EV.push({ ts:ts, name:it.name, day:d, dayIdx:i+1, t:it.t, tz:it.tz||'+09:00', nd:!!it.nd });
+    });
+  });
+  EV.sort(function(a,b){ return a.ts-b.ts; });
+
+  var elT=document.getElementById('nowTitle'), elW=document.getElementById('nowWhen'), elTz=document.getElementById('tzLine'),
+      cdD=document.getElementById('cdD'), cdH=document.getElementById('cdH'), cdM=document.getElementById('cdM'), cdS=document.getElementById('cdS'),
+      bn=document.getElementById('barNow');
+  var localOff=-new Date().getTimezoneOffset();
+  var localTz=''; try{ localTz=Intl.DateTimeFormat().resolvedOptions().timeZone||''; }catch(e){}
+  function clock(ts, zone, off){
+    try{ return new Date(ts).toLocaleTimeString('zh-CN',{timeZone:zone,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}); }
+    catch(e){ var u=new Date(ts+off*60000); return pad(u.getUTCHours())+':'+pad(u.getUTCMinutes())+':'+pad(u.getUTCSeconds()); }
+  }
+  function fmtLocal(ts){
+    var d=new Date(ts);
+    return (d.getMonth()+1)+'/'+d.getDate()+' '+pad(d.getHours())+':'+pad(d.getMinutes());
+  }
+  function tick(){
+    var now=Date.now(), nxt=null;
+    for(var i=0;i<EV.length;i++){ if(EV[i].ts>now){ nxt=EV[i]; break; } }
+    if(!nxt){
+      bn.innerHTML='<span>行程已结束 · 欢迎回家</span>';
+      elT.textContent='行程已结束 · 欢迎回家';
+      elW.innerHTML='2026 年 12 月 10 日 – 12 月 20 日 · 北九州自驾';
+      document.getElementById('cd').style.display='none'; elTz.innerHTML=''; return;
+    }
+    var s=Math.floor(Math.max(0,nxt.ts-now)/1000), dd=Math.floor(s/86400);
+    cdD.textContent=dd; cdH.textContent=pad(Math.floor(s%86400/3600)); cdM.textContent=pad(Math.floor(s%3600/60)); cdS.textContent=pad(s%60);
+    elT.innerHTML='<a href="#d'+nxt.dayIdx+'" style="text-decoration:none;border-bottom:1px dashed var(--line)">'+esc(nxt.name)+'</a>';
+    var zoneName = nxt.tz==='+09:00' ? '日本时间' : (nxt.nd ? '吉隆坡时间' : '马尼拉时间');
+    elW.innerHTML='第 '+nxt.dayIdx+' 天 · '+nxt.day.date.slice(5).replace('-',' / ')+'（'+nxt.day.dow+'）'+(nxt.nd?' 隔天凌晨':'')+' · <b>'+nxt.t+'</b> '+zoneName+'（UTC'+nxt.tz.replace(':00','').replace('+0','+')+'）';
+    var tz='<span>🇯🇵 日本现在 <b>'+clock(now,'Asia/Tokyo',540)+'</b></span>';
+    if(localOff===540) tz+='<span>你的手机在日本时区，不用换算</span>';
+    else tz+='<span>📍 你所在时区（'+(localTz||'本地')+'）这件事是 <b>'+fmtLocal(nxt.ts)+'</b></span>';
+    elTz.innerHTML=tz;
+    bn.innerHTML='<span>下一个 · '+esc(nxt.name)+'</span><b>'+(dd>0?dd+'天 ':'')+pad(Math.floor(s%86400/3600))+':'+pad(Math.floor(s%3600/60))+':'+pad(s%60)+'</b>';
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+/* ---- 开场显示哪一天（按日本日期） ---- */
+(function(){
+  var today=null;
+  try{
+    var p=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+    DAYS.forEach(function(d,i){ if(d.date===p) today=i+1; });
+  }catch(e){}
+  UI.showDay(today||1,false);
+  UI.route(location.hash,false);
+})();
+
+/* ---- 回到顶部 ---- */
+(function(){
+  var b=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){ b.classList.toggle('show', window.scrollY>700); },{passive:true});
+  b.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+})();
+
+/* ---- 离线 ---- */
+if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
+  window.addEventListener('load',function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
+}
+</script>
+</body>
+</html>
