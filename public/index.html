@@ -202,6 +202,21 @@ h2{font-size:16px;margin:0 0 3px;letter-spacing:-.01em;display:flex;align-items:
 .b-must{background:var(--warn-soft);color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 32%,transparent)}
 .b-bad{background:var(--bad-soft);color:var(--bad);border:1px solid color-mix(in srgb,var(--bad) 30%,transparent)}
 .b-cash{background:var(--bg);color:var(--ink2);border:1px solid var(--line)}
+.b-shop{background:color-mix(in srgb,var(--d7) 12%,transparent);color:var(--d7);border:1px solid color-mix(in srgb,var(--d7) 30%,transparent);text-decoration:none}
+.sh{padding:9px 0;border-bottom:1px solid var(--line2)}
+.sh:last-child{border-bottom:0;padding-bottom:2px}
+.sh .n{font-size:14px;font-weight:700;line-height:1.45}
+.sh .h{font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.sh .w{font-size:12.8px;color:var(--ink2);line-height:1.6;margin-top:2px}
+.sh .w b{color:var(--ink)}
+.cat{display:grid;grid-template-columns:1fr;gap:0}
+.cat li{list-style:none}
+ul.it{list-style:none;margin:0;padding:0}
+ul.it li{padding:7px 0;border-bottom:1px solid var(--line2);font-size:13.3px;line-height:1.6}
+ul.it li:last-child{border-bottom:0}
+ul.it li b{font-weight:700}
+ul.it li .px{display:block;font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.where{font-size:12px;color:var(--ink2);background:var(--bg);border:1px dashed var(--line);border-radius:9px;padding:5px 9px;margin:6px 0 4px}
 
 .nav{
   display:inline-flex;align-items:center;gap:4px;
@@ -386,6 +401,12 @@ footer{margin:40px 0 28px;padding-top:18px;border-top:1px solid var(--line);font
   </div>
 </section>
 
+<section id="shop" class="panel" data-tab="shop">
+  <h2>购物 · 哪里买、买什么</h2>
+  <p class="sec-note">上半部是<b>照行程顺序的购物点</b>（逐日行程里标了 <span class="b b-shop">🛍 买什么</span> 的就是这些），下半部是<b>按类别</b>：哪些在日本买比马来西亚划算、哪些在马来西亚很难找到。</p>
+  <div id="shopBox"></div>
+</section>
+
 <section id="booked" class="panel" data-tab="booked">
   <h2>已确认</h2>
   <p class="sec-note">机票 / 租车 / 酒店 / 门票。时间一律是<b>当地时间</b>：日本 UTC+9，马尼拉与吉隆坡 UTC+8（日本比马来西亚快 1 小时）。确认号、证件号、房号不放在这里。</p>
@@ -498,7 +519,11 @@ var DAYS = [
       hours:'多数摊约 18:00–24:00 · 雨天与强风天很多摊不出',
       meta:'那珂川边一整排路边摊：豚骨拉面、关东煮、烤串、明太子玉子烧。',
       tipw:'⚠️ 每摊只有 <b>8–10 个位子</b>，5 个人一起坐要早去或<b>分两摊</b>。大多只收现金，一人点一样以上是礼貌。'},
-    {t:'21:30', name:'回酒店', q:H.hkt.q, m:'transit', meta:'中洲 → 酒店出租车约 10 分钟。明天开始开车，早点睡。'}
+    {t:'21:30', name:'回酒店', q:H.hkt.q, m:'transit', meta:'中洲 → 酒店出租车约 10 分钟。明天开始开车，早点睡。'},
+    {t:'', free:true, shop:1, name:'🛍 博多站 · Hands / MUJI / Yodobashi', q:'アミュプラザ博多', m:'transit',
+      meta:'落地得早的话，15:00 入住后、17:40 出门前先逛：AMU Plaza 博多有九州最大的 <b>Hands</b>（文具、家居、厨房小物）和 <b>MUJI</b>（6F），约 10:00–20:00；车站另一侧的 <b>Yodobashi 博多</b>（9:30–22:00）是小家电、相机、胶卷大本营。'},
+    {t:'', free:true, shop:1, name:'🛍 中洲 Don Quijote（24 小时）', q:'ドン・キホーテ 中洲店', m:'walking',
+      meta:'中洲川端站旁，屋台吃完顺路扫药妆、零食。半夜也开。'}
   ]
 },
 {
@@ -516,7 +541,7 @@ var DAYS = [
     {t:'10:00', name:'门司港 Retro 展望室', q:'門司港レトロ展望室',
       hours:'10:00–22:00',
       meta:'Retro High-Mart 31 楼，看关门海峡与对岸下关。停车用门司港 Retro 周边收费停车场。'},
-    {t:'10:40', name:'门司港 Retro 漫步', q:'門司港レトロ', hi:true, m:'walking',
+    {t:'10:40', shop:1, name:'门司港 Retro 漫步', q:'門司港レトロ', hi:true, m:'walking',
       meta:'旧门司税关、旧门司三井俱乐部、门司港站（重要文化财）、蓝翼门司吊桥。走路就能逛完。',
       tipg:'「蓝翼门司」步行吊桥每天固定几个整点会升起再合上，刚好遇到可以看。'},
     {t:'12:00', name:'午餐 · 门司港烧咖喱', q:'門司港 焼きカレー', meta:'门司港名物「焼きカレー」，咖喱饭铺芝士和蛋进烤箱。'},
@@ -524,7 +549,7 @@ var DAYS = [
     {t:'13:30', name:'小仓城', q:'小倉城',
       hours:'冬季约 9:00–17:00（各来源不一，以现场为准）· 全年无休 · 一般 ¥500（2026/4 起）',
       meta:'城内展示做得很新，顶楼看小仓市区。旁边小仓城庭园有共通券。'},
-    {t:'15:00', name:'THE OUTLETS KITAKYUSHU', q:'THE OUTLETS KITAKYUSHU', dr:'7.5 km · 约 16 分钟',
+    {t:'15:00', shop:1, name:'THE OUTLETS KITAKYUSHU', q:'THE OUTLETS KITAKYUSHU', dr:'7.5 km · 约 16 分钟',
       hours:'约 10:00–20:00',
       meta:'旧 Space World 原址的 outlet，停车免费。逛到 16:40 就要走。'},
     {t:'16:45', name:'→ 皿仓山缆车 山麓站', q:'皿倉山ケーブルカー 山麓駅', dr:'9 km · 约 25 分钟'},
@@ -547,7 +572,7 @@ var DAYS = [
   items:[
     {t:'08:30', name:'出发 → 太宰府', q:'太宰府天満宮', dr:'17.7 km · 约 35 分钟',
       tipw:'<b>周六 10 点后参道周边停车场常满</b>，排队进停车场会吃掉半小时。早到是今天的关键。'},
-    {t:'09:00', name:'太宰府天满宫 + 表参道', q:'太宰府天満宮', hi:true,
+    {t:'09:00', shop:1, name:'太宰府天满宫 + 表参道', q:'太宰府天満宮', hi:true,
       hours:'约 6:30–18:30 · 免费',
       meta:'学问之神菅原道真。参道必吃<b>梅枝饼</b>（现烤红豆饼），隈研吾设计的星巴克也在参道上。'},
     {t:'10:45', name:'九州国立博物馆（替代九年庵）', q:'九州国立博物館',
@@ -556,17 +581,19 @@ var DAYS = [
       tipx:'🔴 <b>九年庵今天不开</b>：九年庵只在秋季（2026 年为 11/14–11/29）与春季少数几天公开，12/12 一定是关的。trip.com 显示「Temporarily closed」就是这个原因。'},
     {t:'12:00', name:'午餐 · 太宰府参道', q:'太宰府天満宮 表参道'},
     {t:'13:00', name:'→ 鸟栖 Premium Outlets', q:'鳥栖プレミアム・アウトレット', dr:'约 20 km · 约 30 分钟'},
-    {t:'13:30', name:'鸟栖 Premium Outlets', q:'鳥栖プレミアム・アウトレット', hi:true,
+    {t:'13:30', shop:1, name:'鸟栖 Premium Outlets', q:'鳥栖プレミアム・アウトレット', hi:true,
       hours:'10:00–20:00',
-      meta:'九州最大的 outlet 之一，约 150 家店。逛 3 小时。'},
+      meta:'九州最大级的 outlet，约 170 家店。逛 3 小时。'},
     {t:'16:40', name:'→ ららぽーと福冈', q:'ららぽーと福岡', dr:'28 km · 约 30–45 分钟（周六傍晚会塞）'},
-    {t:'17:30', name:'ららぽーと福冈 · 实物大 ν 高达', q:'ららぽーと福岡 実物大νガンダム立像', hi:true,
+    {t:'17:30', shop:1, name:'ららぽーと福冈 · 实物大 ν 高达', q:'ららぽーと福岡 実物大νガンダム立像', hi:true,
       hours:'商场约 10:00–21:00 · 高达白天「起动」演出 10:00–18:00 每整点 · 夜间影像演出 19:00–21:00 每 30 分钟',
       meta:'24.8 米的 RX-93ff ν 高达。冬季有特别点灯版。晚餐在商场里解决。'},
     {t:'19:00', name:'ν 高达夜间演出', q:'ららぽーと福岡 実物大νガンダム立像',
       meta:'19:00 / 19:30 / 20:00 / 20:30 / 21:00，挑一场看就好。'},
     {t:'20:00', name:'回酒店', q:H.hkt.q, dr:'约 3 km · 10 分钟',
-      tipg:'今晚是博多最后一晚，<b>行李今晚收好</b>，明早直接装车。'}
+      tipg:'今晚是博多最后一晚，<b>行李今晚收好</b>，明早直接装车。'},
+    {t:'', free:true, shop:1, name:'🛍 Yodobashi 博多 · 开到 22:00', q:'ヨドバシカメラ マルチメディア博多',
+      meta:'就在博多站旁、离酒店很近。ららぽーと回来如果还有力气，小家电、相机、胶卷、instax 在这里一次看完。<b>这是整趟最大的电器店</b>，错过的话 12/16 熊本、12/19 天神还有 Bic Camera。'}
   ]
 },
 {
@@ -583,7 +610,7 @@ var DAYS = [
     {t:'11:00', name:'→ 别府', q:'鉄輪温泉', dr:'约 105 km · 约 1 小时 30 分 · 大分道'},
     {t:'12:30', name:'午餐 · 铁轮 地狱蒸工房', q:'地獄蒸し工房 鉄輪',
       meta:'用温泉蒸气自己蒸海鲜、蔬菜、鸡蛋。就在海地狱附近。'},
-    {t:'13:30', name:'别府地狱巡礼', q:'海地獄', hi:true, badge:'must',
+    {t:'13:30', shop:1, name:'别府地狱巡礼', q:'海地獄', hi:true, badge:'must',
       hours:'8:00–17:00 · 无休 · 7 个地狱共通券（单点约 ¥450）',
       meta:'铁轮区 5 个（海地狱、鬼石坊主、灶地狱、鬼山、白池）走路串；<b>血之池、龙卷</b>在 3 km 外的柴石，开车过去。龙卷地狱间歇泉约 30–40 分钟喷一次。',
       tipw:'共通券比单买划算，5 个人一起买。<b>16:30 前要进完最后一个</b>。'},
@@ -613,7 +640,7 @@ var DAYS = [
   items:[
     {t:'08:00', name:'早餐 · 早上泡汤', meta:'不赶时间，别府的早上慢慢来。'},
     {t:'10:00', name:'退房 · 出发 → 由布院', q:'湯の坪街道', dr:'23 km · 约 40 分钟'},
-    {t:'10:45', name:'汤之坪街道', q:'湯の坪街道', hi:true, m:'walking',
+    {t:'10:45', shop:1, name:'汤之坪街道', q:'湯の坪街道', hi:true, m:'walking',
       meta:'由布院主街，甜点、杂货、小吃一路逛：B-speak 蛋糕卷、金赏可乐饼、Milch 布丁。停车用街道周边收费停车场。'},
     {t:'12:15', name:'午餐 · 由布院', q:'湯布院 ランチ', meta:'丰后牛、地鸡、荞麦面都是这里的招牌。'},
     {t:'13:30', name:'由布院 Floral Village + 猫头鹰森林', q:'湯布院フローラルヴィレッジ',
@@ -650,7 +677,7 @@ var DAYS = [
       hours:'全天开放 · 免费 · 免费停车',
       meta:'阿苏外轮山最高点（936 m），一眼看完整个阿苏火山口盆地与涅槃像般的五岳。'},
     {t:'11:30', name:'→ 阿苏市区', q:'阿蘇神社', dr:'约 20 分钟'},
-    {t:'12:00', name:'午餐 · 阿苏神社门前町', q:'阿蘇神社', meta:'赤牛丼（阿苏和牛）是招牌。门前町商店街有涌水和小吃，阿苏神社顺便参拜。'},
+    {t:'12:00', shop:1, name:'午餐 · 阿苏神社门前町', q:'阿蘇神社', meta:'赤牛丼（阿苏和牛）是招牌。门前町商店街有涌水和小吃，阿苏神社顺便参拜。'},
     {t:'13:15', name:'→ 草千里（经米冢）', q:'草千里ヶ浜', dr:'约 30 分钟 · 阿苏全景道路'},
     {t:'13:45', name:'草千里之滨 + 阿苏火山博物馆', q:'草千里ヶ浜', hi:true,
       hours:'草千里全天 · 火山博物馆约 9:00–17:00',
@@ -664,7 +691,9 @@ var DAYS = [
     {t:'16:40', name:'入住 亀の井ホテル 阿苏', q:H.aso.q, hi:true, icon:'🛏', dr:'19 km · 约 26 分钟',
       meta:H.aso.addr+' · <a class="tel" href="tel:+81967221122">'+H.aso.tel+'</a>',
       tipw:'⚠️ 这间的<b>入住时间只到 18:00</b>。今天任何一站拖延，都要留意这个时限；会晚到就先打电话。'},
-    {t:'18:00', name:'泡汤 · 晚餐', meta:'阿苏晚上会降到 0°C 上下，今晚就待在酒店。'}
+    {t:'18:00', name:'泡汤 · 晚餐', meta:'阿苏晚上会降到 0°C 上下，今晚就待在酒店。'},
+    {t:'', free:true, shop:1, name:'🛍 道之驿 阿苏', q:'道の駅 阿蘇',
+      meta:'JR 阿苏站旁，阿苏神社开车约 5 分钟，午餐前后顺路。阿苏牛乳、牛奶果酱、高菜渍、赤牛咖喱调理包，都是当地才有的伴手礼。'}
   ]
 },
 {
@@ -690,15 +719,20 @@ var DAYS = [
       hours:'约 9:00–17:00（最后入园约 16:00）· 12/29 休园 · 约 ¥800',
       meta:'2016 年地震后修复完成的天守阁，内部是博物馆。停车用二之丸停车场或城彩苑停车场。',
       tipw:'⚠️ 熊本城在 <b>2026 年 7 月的熊本地震后临时休园、8/13 才重新开放</b>，开放区域与时间可能和以前不同。<b>当天出发前看一次熊本城官网</b>。'},
-    {t:'15:45', name:'樱之马场 城彩苑', q:'桜の馬場 城彩苑', m:'walking',
+    {t:'15:45', shop:1, name:'樱之马场 城彩苑', q:'桜の馬場 城彩苑', m:'walking',
       hours:'约 9:00–17:30', meta:'城脚下的美食与伴手礼街，熊本拉面、马肉可乐饼、いきなり団子。'},
-    {t:'16:45', name:'熊本熊广场（くまモンスクエア）', q:'くまモンスクエア', hi:true,
+    {t:'16:45', shop:1, name:'熊本熊广场（くまモンスクエア）', q:'くまモンスクエア', hi:true,
       hours:'10:00–19:00 · 免费 · 12/31–1/2 休',
       meta:'熊本熊部长的「办公室」。<b>熊本熊本人出场的时间每天公布在官网</b>，出发前看一下，挑得到就看。',
       tipg:'从城彩苑开车约 5 分钟，停鹤屋百货或附近收费停车场；或者车留在城彩苑，走路 15 分钟。'},
     {t:'18:00', name:'晚餐 · 下通 / 上通', q:'下通アーケード', meta:'熊本拉面（黑蒜油）、太平燕、马肉刺身。'},
     {t:'19:30', name:'入住 The Blossom Kumamoto', q:H.kum.q, hi:true, icon:'🛏', dr:'约 15 分钟',
       meta:H.kum.addr+' · <a class="tel" href="tel:+81963278763">'+H.kum.tel+'</a>'},
+    {t:'', free:true, shop:1, name:'🛍 酒店楼下 · AMU Plaza 熊本 / Bic Camera', q:'アミュプラザくまもと', m:'walking',
+      meta:'The Blossom 就在 JR 熊本站大楼：AMU Plaza 3F 有 <b>Hands Be</b>（文具、杂货），旁边是 <b>Bic Camera</b>（小家电、相机、胶卷、模型）。',
+      tipw:'明早 8:15 就要去渡轮码头，<b>熊本只剩今晚能逛</b>；19:30 入住时不少店已经快关（约 20:00–21:00）。想逛电器就把下通的晚餐提早 30 分钟。'},
+    {t:'', free:true, shop:1, name:'🛍 Don Quijote 熊本下通店', q:'ドン・キホーテ 熊本下通り店', m:'walking',
+      meta:'下通晚餐后顺路，开到深夜（不是 24 小时）。药妆、零食、熊本熊周边。'},
     {t:'', free:true, name:'🔴 吉次园 · 拿掉了', q:'観光農園 吉次園',
       tipx:'吉次园是熊本北边植木町的<b>观光果园</b>（草莓狩），2025–26 季的草莓狩是 <b>12 月下旬</b>才开始，12/16 大概率还没得采；而且 <b>17:00 关门</b>，排在熊本城后面根本赶不上。<br>要去只能把熊本城压缩，不值得——我的建议是放弃。'}
   ]
@@ -725,13 +759,15 @@ var DAYS = [
     {t:'13:30', name:'午餐 · 长崎强棒面 / 皿乌冬', q:'長崎ちゃんぽん', meta:'长崎ちゃんぽん、皿うどん。'},
     {t:'14:30', name:'眼镜桥 · 中岛川', q:'眼鏡橋 長崎', m:'walking',
       meta:'日本最古老的石造拱桥之一。河岸石墙上藏着几颗<b>心形石头</b>，找找看。'},
-    {t:'15:15', name:'长崎新地中华街', q:'長崎新地中華街', m:'walking',
+    {t:'15:15', shop:1, name:'长崎新地中华街', q:'長崎新地中華街', m:'walking',
       hours:'多数店约 10:00–21:00', meta:'日本三大中华街之一，角煮包、胡麻団子边走边吃。'},
     {t:'16:00', name:'入住 Fav LUX 长崎', q:H.ngs.q, hi:true, icon:'🛏',
       meta:H.ngs.addr+' · <a class="tel" href="tel:+815017945808">'+H.ngs.tel+'</a>',
       tipw:'停车是<b>外部停车场、不能预约</b>（约 ¥2,000／日）。到了先打给酒店问停哪里，别在门口绕。'},
     {t:'16:30', name:'大浦天主堂 / 哥拉巴园一带', q:'大浦天主堂', m:'walking',
       meta:'就在酒店旁边，步行 5 分钟。哥拉巴园约开到 18:00，看港口黄昏。'},
+    {t:'', free:true, shop:1, name:'🛍 长崎蜂蜜蛋糕 カステラ', q:'福砂屋 本店',
+      meta:'福砂屋本店、松翁轩、文明堂总本店都在市区。整条装比切片便宜，保存期限看包装，适合带回去送人。'},
     {t:'17:20', name:'长崎港 · 出岛 Wharf 日落', q:'出島ワーフ', m:'walking',
       meta:'<b>日落约 17:20</b>。港边木栈道一整排餐厅，可以直接在这里吃晚餐。'},
     {t:'18:00', name:'晚餐 · 出岛 Wharf / 思案桥', q:'出島ワーフ'},
@@ -770,7 +806,8 @@ var DAYS = [
     {t:'18:10', name:'入住 Hotel Marinoa Resort Fukuoka', q:H.mar.q, hi:true, icon:'🛏',
       meta:H.mar.addr+' · <a class="tel" href="tel:+81928955511">'+H.mar.tel+'</a>',
       tipg:'住 2 晚（12/18–12/20）。隔壁就是 Marinoa City Outlet。'},
-    {t:'19:00', name:'晚餐 · Marinoa City / 酒店周边', q:'マリノアシティ福岡'}
+    {t:'19:00', shop:1, name:'晚餐 · Marinoa City / 酒店周边', q:'マリノアシティ福岡',
+      meta:'大型 outlet 就在酒店隔壁，住两晚，可以分两个晚上慢慢逛。'}
   ]
 },
 {
@@ -788,18 +825,22 @@ var DAYS = [
     {t:'11:45', name:'→ 天神 · 停车', q:'天神地下街 駐車場', dr:'约 15 分钟',
       tipw:'周六天神停车场中午就排队。可以先用 akippa 之类的 App 预约车位，或停到天神外围再走。'},
     {t:'12:15', name:'午餐 · 天神', q:'天神', m:'walking'},
-    {t:'13:15', name:'天神地下街', q:'天神地下街', m:'walking', hours:'商店约 10:00–20:00', meta:'欧风石砖地下街，约 150 家店，下雨天也能逛。'},
-    {t:'14:15', name:'mont-bell 福冈天神店', q:'モンベル 福岡天神店', m:'walking', hours:'10:30–21:00', meta:'日本户外品牌，在日本买比马来西亚便宜，可以免税。'},
+    {t:'13:15', shop:1, name:'天神地下街', q:'天神地下街', m:'walking', hours:'商店约 10:00–20:00', meta:'欧风石砖地下街，约 150 家店，下雨天也能逛。'},
+    {t:'14:15', shop:1, name:'mont-bell 福冈天神店', q:'モンベル 福岡天神店', m:'walking', hours:'10:30–21:00', meta:'日本户外品牌，在日本买比马来西亚便宜，可以免税。'},
+    {t:'', free:true, shop:1, name:'🛍 天神 · Loft / Bic Camera / 大丸', q:'天神ロフト', m:'walking',
+      meta:'和 mont-bell 同一区，走路都在 10 分钟内：<b>Loft</b> 在 Mina 天神 4F（文具、2027 手帐、杂货）· <b>Bic Camera 天神</b>（小家电、相机、胶卷）· <b>大丸福冈天神</b>（2026/8 刚翻新，专柜化妆品）。挑一两家，别全跑。'},
     {t:'15:00', name:'I\'m donut? 福冈店', q:'I\'m donut? 福岡店', m:'walking', hi:true,
       hours:'约 11:00–20:00（各来源不一，以店家 IG 为准）· 不定休',
       meta:'渡边通，生甜甜圈名店。',
       tipw:'⚠️ 排队常常 30–60 分钟以上，<b>卖完就提早关</b>。真的想吃就把它提到中午，或派两个人先去排。'},
     {t:'15:45', name:'走去运河城博多', q:'キャナルシティ博多', m:'walking', meta:'约 15 分钟。'},
-    {t:'16:00', name:'运河城博多', q:'キャナルシティ博多', hi:true, m:'walking',
+    {t:'16:00', shop:1, name:'运河城博多', q:'キャナルシティ博多', hi:true, m:'walking',
       hours:'约 10:00–21:00', meta:'运河两岸的大型商场，整点有喷水秀，晚上有投影灯光秀。'},
     {t:'17:30', name:'栉田神社', q:'櫛田神社', m:'walking',
       hours:'4:00–22:00 · 免费', meta:'运河城走 4 分钟。博多祇园山笠的神社，境内常年展示巨大的山笠装饰。'},
     {t:'18:15', name:'晚餐 · 博多牛肠锅 / 一兰本店', q:'中洲', m:'walking', meta:'博多もつ鍋（牛肠锅）、水炊き（鸡肉锅）。5 人记得先订位。'},
+    {t:'19:30', shop:1, name:'🛍 中洲 Don Quijote（24 小时）', q:'ドン・キホーテ 中洲店', m:'walking',
+      meta:'最后一次扫药妆和零食的机会。'},
     {t:'20:00', name:'取车 → 回 Marinoa', q:H.mar.q, dr:'约 25 分钟'},
     {t:'21:00', name:'收行李', hi:true,
       tipg:'🧳 <b>今晚收完</b>：明天还车前要留时间加油、清车上垃圾。液体超过 100 ml 放托运，充电宝只能随身。'}
@@ -820,7 +861,7 @@ var DAYS = [
     {t:'12:00', name:'🚗 还车 → 接驳车到国际线', q:APT, hi:true,
       meta:'还车营业所以订单为准，多数在机场周边，坐营业所接驳车到国际线航站楼（10–15 分钟）。',
       tipw:'还车前检查：车内导航里的个人资料、ETC 卡要还、手机充电线别忘在车上。'},
-    {t:'12:45', name:'福冈机场 国际线 · PR 报到 · 托运', q:APT, hi:true, icon:'🛂',
+    {t:'12:45', shop:1, name:'福冈机场 国际线 · PR 报到 · 托运', q:APT, hi:true, icon:'🛂',
       meta:'国际线建议起飞前 <b>3 小时</b>到。行李直挂到吉隆坡，马尼拉不用重领（以柜台说明为准）。'},
     {t:'15:45', name:'PR425 起飞 → 马尼拉', q:APT, hi:true, icon:'✈️', meta:'福冈 → 马尼拉，约 4 小时 05 分。'},
     {t:'18:50', tz:'+08:00', name:'抵达 马尼拉 NAIA · 转机', q:'Ninoy Aquino International Airport', hi:true, icon:'🛬',
@@ -908,6 +949,7 @@ var TODO = [
     '护照效期确认；<b>Visit Japan Web</b> 先登记入境与海关资料（非强制，但入境快很多）。',
     '订日本上网方案（eSIM 或网卡）。5 个人至少两支手机能上网，导航与查路况分开。',
     '换日元现金：屋台、牡蛎小屋、温泉、神社、小店很多只收现金，建议每人先带 ¥30,000 左右。',
+    '<b>行李箱留空间</b>：12/12 鸟栖、12/19 天神是两个大采购日；托运额度看回程 PR 机票，超重很贵。出发前用 Shopee 查一下想买的东西在马来西亚多少钱，现场才好比。',
     '打包：厚外套、毛帽手套（阿苏、九重、皿仓山山顶会到 0°C 上下）、好走防滑的鞋、日本插头转接头（A 型两脚扁插，100V）。'
   ]},
   { h:'取车时 · 当场确认', items:[
@@ -998,6 +1040,102 @@ var TIPS = [
     '<div class="quote"><small>还车</small>車を返しに来ました。ガソリンは満タンです。<br><span style="font-size:12px;color:var(--ink3)">我来还车，油加满了。</span></div>' }
 ];
 
+
+/* =========================================================
+   购物
+   ========================================================= */
+var SHOPDAY = [
+  { d:1, a:'博多站 · 中洲', w:'12/10 傍晚到晚上 · 酒店附近', s:[
+    ['AMU Plaza 博多 · Hands','アミュプラザ博多','约 10:00–20:00','九州最大的 Hands。<b>文具、手帐、家居小物、厨房工具、旅行用品</b>一次看齐，楼上 6F 是 MUJI。'],
+    ['Yodobashi 博多','ヨドバシカメラ マルチメディア博多','9:30–22:00','<b>小家电、相机、胶卷、instax、模型</b>。整趟最大的电器店，柜台可以问「海外対応」机种。'],
+    ['中洲 Don Quijote','ドン・キホーテ 中洲店','24 小时','药妆、零食、杂货。屋台吃完顺路。']]},
+  { d:2, a:'门司港 · 北九州', w:'12/11', s:[
+    ['门司港 Retro','門司港レトロ','白天','门司港是「香蕉叫卖」的发源地，<b>香蕉口味甜点与周边</b>是这里才有的伴手礼；关门海峡河豚造型小物。'],
+    ['THE OUTLETS KITAKYUSHU','THE OUTLETS KITAKYUSHU','约 10:00–20:00','运动、户外、日系服饰 outlet。这天开车最多，<b>当作顺路就好</b>，大买留给鸟栖。']]},
+  { d:3, a:'太宰府 · 鸟栖 · ららぽーと', w:'12/12 · 整趟最集中的购物日', s:[
+    ['太宰府表参道','太宰府天満宮 表参道','白天','<b>梅枝饼</b>（当场吃最好）、学业御守、太宰府限定的木制工艺与文具。'],
+    ['鸟栖 Premium Outlets','鳥栖プレミアム・アウトレット','10:00–20:00','九州最大级 outlet，约 170 家。<b>运动鞋服、日系服饰、厨具与餐具品牌</b>（有 STAUB 等）。出发前在官网 Shop 列表先圈好想逛的牌子，3 小时很快。'],
+    ['ららぽーと福冈 · GUNDAM SIDE-F','ららぽーと福岡','10:00–21:00','4F 的高达专门店有<b>这里限定的 ν 高达模型</b>，马来西亚买不到。商场里也有 Uniqlo、生活杂货、超市。'],
+    ['Yodobashi 博多（回程顺路）','ヨドバシカメラ マルチメディア博多','到 22:00','12/10 没逛到的话，今晚回酒店前补。']]},
+  { d:4, a:'别府', w:'12/13', s:[
+    ['地狱巡礼各地狱的商店','海地獄','8:00–17:00','<b>汤之花（湯の花）入浴剂</b>是别府最具代表性的伴手礼，在家泡出温泉味；地狱蒸布丁、温泉蛋。']]},
+  { d:5, a:'由布院 · 汤之坪街道', w:'12/14', s:[
+    ['汤之坪街道','湯の坪街道','约 10:00–17:00','角色专门店一整条：<b>吉卜力「橡子共和国」、Snoopy 茶屋、Miffy 店</b>，有由布院限定款。大分名产<b>柚子胡椒</b>、手工果酱、玻璃与木工小物。']]},
+  { d:6, a:'阿苏', w:'12/15', s:[
+    ['阿苏神社门前町','阿蘇神社','白天','门前商店街小吃与手工艺。'],
+    ['道之驿 阿苏','道の駅 阿蘇','白天','阿苏牛乳、<b>牛奶果酱</b>、高菜渍、赤牛咖喱调理包。']]},
+  { d:7, a:'熊本', w:'12/16 · 熊本熊大本营', s:[
+    ['熊本熊广场','くまモンスクエア','10:00–19:00','官方周边，<b>有熊本限定款</b>；马来西亚几乎买不到正版。'],
+    ['樱之马场 城彩苑','桜の馬場 城彩苑','约 9:00–17:30','熊本伴手礼集中地：<b>香梅「誉の阵太鼓」</b>（熊本最经典的红豆点心）、いきなり団子、马油护肤品。'],
+    ['下通 · Don Quijote','ドン・キホーテ 熊本下通り店','到深夜','药妆、零食。'],
+    ['AMU Plaza 熊本 · Bic Camera · Hands Be','アミュプラザくまもと','约 20:00–21:00 关','就在你们酒店楼下。<b>熊本只有今晚能逛</b>，明早 8:15 就走。']]},
+  { d:8, a:'长崎', w:'12/17', s:[
+    ['新地中华街','長崎新地中華街','约 10:00–21:00','角煮包、麻花（よりより）。'],
+    ['长崎蜂蜜蛋糕','福砂屋 本店','白天','<b>カステラ</b>：福砂屋、松翁轩、文明堂。整条装送人最体面。'],
+    ['长崎玻璃 · 波佐见烧','長崎 ビードロ','白天','长崎玻璃（ビードロ）、附近波佐见的瓷器在市区选物店也买得到。']]},
+  { d:9, a:'糸岛 · Marinoa', w:'12/18', s:[
+    ['Marinoa City Outlet','マリノアシティ福岡','约 10:00–20:00','<b>就在酒店隔壁、住两晚</b>，鸟栖没买完的在这里补。'],
+    ['糸岛的盐','工房とったん','白天','<b>またいちの塩</b>（糸岛手工海盐，配的布丁也有名），厨房伴手礼首选。营业时间出发前查。']]},
+  { d:10, a:'天神 · 中洲 · 运河城', w:'12/19 · 最后的大采购', s:[
+    ['mont-bell 天神','モンベル 福岡天神店','10:30–21:00','日本户外品牌，<b>日本本土价通常明显比马来西亚代理便宜</b>，羽绒、雨衣、袜子都好买。'],
+    ['Loft（Mina 天神 4F）','天神ロフト','约 10:00 起','<b>文具、2027 年手帐</b>（12 月是手帐卖得最齐的时候）、美妆杂货。'],
+    ['Bic Camera 天神','ビックカメラ 天神','白天到晚上','小家电、相机、胶卷。'],
+    ['大丸福冈天神','大丸 福岡天神店','白天到晚上','2026/8 全面翻新。<b>专柜化妆品</b>（Suqqu、Lunasol 这类在马来西亚很少见的）。'],
+    ['天神地下街 · 运河城','キャナルシティ博多','约 10:00–21:00','流行服饰、杂货、角色店。'],
+    ['中洲 Don Quijote','ドン・キホーテ 中洲店','24 小时','最后扫药妆、零食。']]},
+  { d:11, a:'福冈机场国际线', w:'12/20', s:[
+    ['出境后免税店','福岡空港 国際線ターミナル','航班前','最后补<b>博多通りもん、明太子仙贝（めんべい）</b>。<b>退税</b>要在出境时先到税关端末刷护照（见上面）。']]}
+];
+
+var SHOPCAT = [
+  { t:'💊 药妆', where:'Don Quijote（中洲 24h、熊本下通）· 天神与下通的药妆店 · 路边的コスモス（Cosmos）药妆超市，自驾停车方便、价钱常常最低', items:[
+    ['<b>防晒</b>：Biore UV Aqua Rich、Anessa、Allie、Skin Aqua','日本价约 ¥900–3,000（≈ RM23–78）。马来西亚有卖的款式通常要贵三到五成，日本还有很多当地没进的款。'],
+    ['<b>眼药水</b>：Rohto、参天 Sante、Lion Smile','种类多到马来西亚完全比不上，¥500–1,500。药品只买自用量。'],
+    ['<b>肌研极润（Hada Labo 日本版）、Curél、Minon、Melano CC</b>','日本版配方与马来西亚卖的不一定一样，价钱也便宜不少。'],
+    ['<b>花王蒸气眼罩、休足时间足贴、撒隆巴斯</b>','长途开车与走路的必需品，买来自己用也划算。'],
+    ['<b>面膜</b>：Lululun、肌美精、Quality 1st','大包装日本才有，价钱差距很明显。']]},
+  { t:'💄 化妆品', where:'开架彩妆在 Don Quijote、Loft、药妆店 · 专柜品牌在大丸福冈天神（12/19）、博多阪急、熊本鹤屋', items:[
+    ['<b>开架彩妆</b>：Canmake、Cezanne、Kate、Excel、Kiss Me（Heroine Make）、Opera','¥600–1,800。<b>Cezanne、Excel 在马来西亚很难买到正货</b>，日本当季新色也只在日本先出。'],
+    ['<b>专柜</b>：Cosme Decorte、Suqqu、Lunasol、Clé de Peau、SK-II、资生堂','日本本土价再加退税，比马来西亚专柜便宜一截；<b>Suqqu、Lunasol 这类在马来西亚很少见或没有专柜</b>，是真正的「必买」。'],
+    ['<b>ReFa 美容滚轮、梳子</b>','不插电，没有电压问题，日本价明显较低。']]},
+  { t:'🔌 小家电', where:'Yodobashi 博多（12/10、12/12 晚）· Bic Camera 熊本（12/16 晚）· Bic Camera 天神（12/19）', items:[
+    ['<b>⚠️ 先看电压</b>','日本是 <b>100V</b>，马来西亚是 <b>240V</b>。日本国内款直接插马来西亚插座会烧掉。<b>只买标示「海外対応」或「100–240V」的款</b>，或用电池／USB 充电的；插头是 A 型，回去要转接头。日本保修通常只限日本国内。'],
+    ['<b>Panasonic 吹风机 Nanocare 海外版（如 EH-NA9F）</b>','有 100–120V / 200–240V 切换，可以带回马来西亚用，是最多人买的款。'],
+    ['<b>电动牙刷、电动刮胡刀、美容仪</b>','很多充电座本身就是 100–240V 自动对应，<b>看充电器上的标示</b>再买。'],
+    ['<b>电饭锅</b>','国内款是 100V。只买柜台标示「海外向け 220–240V」的出口款，否则就别买。'],
+    ['<b>保温杯、焖烧罐（象印、Thermos、Tiger）</b>','不插电、没有电压问题，日本价常常便宜很多，颜色款式也多。']]},
+  { t:'📷 CCD · 胶卷', where:'Yodobashi 博多 · Bic Camera · 二手：Hard Off／Book Off、Kitamura（中古相机）——自驾最方便，路边常见，<a class="nav" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%BC%E3%83%89%E3%82%AA%E3%83%95" target="_blank" rel="noopener">找附近的 Hard Off</a>', items:[
+    ['<b>CCD 卡片机（2000 年代的 Canon IXY、Sony Cyber-shot、Fujifilm FinePix、Olympus、Casio Exilim）</b>','日本是这些相机的「原产地」，二手店货多、价钱通常比马来西亚 Shopee／Carousell 转卖便宜。不过 2026 年 CCD 风潮也让日本二手价涨了。'],
+    ['<b>买二手 CCD 要当场检查</b>','① 有没有附<b>电池和充电器</b>（日本充电器多为 100–240V，看标示）② 用 SD 卡还是旧的 xD／Memory Stick ③ 镜头有没有霉、开机伸缩有没有卡。<b>「ジャンク」= 不保证能用</b>，便宜但有风险。'],
+    ['<b>写ルンです（富士即可拍）</b>','日本才有的全系列与限定外壳，价钱也比海外便宜。'],
+    ['<b>35mm 胶卷、instax 相纸</b>','日本选择多（Fujifilm、Kodak、Lomography），但富士 2026/4 起 instax mini 相纸涨了约 22–27%。<b>出发前先查好 Shopee 价钱</b>，现场比一下再决定买多少。'],
+    ['<b>胶卷过安检</b>','放随身行李，不要托运；ISO 800 以上请求手检（hand check）。']]},
+  { t:'✏️ 文具', where:'Hands 博多（12/10）· Loft 天神（12/19）· Hands Be 熊本（12/16）· 便利店与 MUJI', items:[
+    ['<b>2027 年手帐</b>：Hobonichi、Midori、Traveler\'s Notebook','12 月是手帐卖得最齐的月份，日本价也最低。'],
+    ['<b>笔</b>：Uni Jetstream、Kuru Toga、Pilot Frixion／Juice up、Zebra Sarasa、Pentel Energel','一支 ¥150–600（≈ RM4–16），颜色与限定款远比马来西亚多。'],
+    ['<b>纸胶带 mt、Midori MD 笔记本、Tombow</b>','马来西亚有卖但款式少、价钱高。'],
+    ['<b>邮局的「ご当地 Form Card」</b>','每个县造型不同的明信片（熊本熊、阿苏山……），<b>只有当地邮局有</b>，喜欢盖章收集的必买。'],
+    ['<b>御朱印帐</b>','太宰府天满宫、阿苏神社、栉田神社都可以求御朱印，本子在神社就能买。']]},
+  { t:'🏠 Home & Living', where:'MUJI（博多 AMU 6F、运河城）· Hands · Daiso · 3COINS · Marinoa City', items:[
+    ['<b>Daiso</b>','日本基本价 <b>¥110（≈ RM3）</b>，马来西亚 Daiso 单一价约 RM6 起；而且日本店的品项多好几倍。收纳、旅行小物、厨房小物最划算。'],
+    ['<b>3COINS</b>','¥330 起的设计杂货，<b>马来西亚没有门市</b>。'],
+    ['<b>MUJI</b>','同一件日本价通常比马来西亚 MUJI 低，<b>食品、季节限定、日本限定的家居品</b>马来西亚没有。'],
+    ['<b>今治毛巾</b>','日本才有的品质，商场与百货都买得到。']]},
+  { t:'🍳 Kitchen & Dining', where:'鸟栖 Outlet（12/12）· Hands · MUJI · 长崎与有田、波佐见的陶瓷', items:[
+    ['<b>波佐见烧、有田烧</b>','就是这趟经过的佐贺、长崎产地的瓷器，<b>12/18 武雄离有田约 20–25 分钟</b>。产地价比马来西亚日系选物店便宜很多。易碎，<b>请店家包好、放随身</b>。'],
+    ['<b>STAUB 这类铸铁锅</b>','鸟栖 Outlet 官网列有 STAUB 店，outlet 价再加退税；其他厨具品牌出发前在官网 Shop 列表查。很重，留意托运额度。'],
+    ['<b>厨具</b>：贝印 Kai、Hario、Kalita 手冲咖啡器具、便当盒','日本价与选择都比马来西亚好。<b>刀具只能托运</b>。'],
+    ['<b>调味料</b>：柚子胡椒、糸岛またいちの塩、明太子酱','九州才有的味道，放冰箱可以吃很久。']]},
+  { t:'⭐ 九州限定 · 马来西亚难找', where:'各地伴手礼店、机场', items:[
+    ['<b>博多通りもん（明月堂）</b>','福冈最有名的伴手礼，机场就有。'],
+    ['<b>明太子仙贝 めんべい</b>','明太子本体要冷藏、转机十几个小时不好带，<b>めんべい常温就能放</b>。'],
+    ['<b>熊本「誉の阵太鼓」、熊本熊限定周边</b>','只在熊本买得到正版限定款。'],
+    ['<b>别府汤之花</b>','回家泡出温泉味。'],
+    ['<b>长崎カステラ</b>','福砂屋、松翁轩、文明堂。'],
+    ['<b>GUNDAM SIDE-F 限定模型</b>','只在ららぽーと福冈。'],
+    ['<b>あまおう草莓</b>口味的零食','福冈名产草莓，12 月正好是季节，相关零食到处都有。']]}
+];
+
 /* =========================================================
    渲染
    ========================================================= */
@@ -1009,7 +1147,7 @@ function el(t,a,txt){ var e=document.createElementNS(NS,t); for(var k in a) e.se
 
 /* ---- 分页 ---- */
 var TABS = [
-  ['days','📅','行程'], ['map','🗺','地图'], ['booked','🎫','订位'],
+  ['days','📅','行程'], ['shop','🛍','购物'], ['map','🗺','地图'], ['booked','🎫','订位'],
   ['check','⚠️','核对'], ['todo','✅','待办'], ['tips','💡','贴士']
 ];
 var UI = (function(){
@@ -1275,6 +1413,7 @@ function dayMapSvg(idx){
       if(it.badge==='book')   badge=' <span class="b b-book">需提前订</span>';
       if(it.badge==='must')   badge=' <span class="b b-must">必去</span>';
       if(it.badge==='cash')   badge=' <span class="b b-cash">多收现金</span>';
+      if(it.shop) badge+=' <a class="b b-shop" href="#shop-d'+idx+'">🛍 买什么</a>';
       var nm = it.q ? '<a class="nav" href="'+navUrl(it.q, it.m || d.rm)+'" target="_blank" rel="noopener">'+it.name+'</a>' : '<span>'+it.name+'</span>';
       var tzTag = it.tz==='+08:00' ? '<em>UTC+8</em>' : '';
       html+='<li'+(it.hi?' class="hi"':'')+'>'+
@@ -1317,6 +1456,34 @@ function dayMapSvg(idx){
     var open=m.classList.toggle('open');
     b.textContent = open ? '🗺 收起路线' : '🗺 当日路线';
   });
+})();
+
+
+/* ---- 购物 ---- */
+(function(){
+  var h='<div class="card"><div class="card-t" style="margin-bottom:4px">先看这三件事</div><ul class="plain">'+
+    '<li><b>汇率</b>：2026 年 11 月约 <b>RM1 ≈ ¥39</b>，也就是 <b>¥1,000 ≈ RM26</b>、¥10,000 ≈ RM260。心算：日币价 ÷ 40 ≈ 马币。</li>'+
+    '<li><b>免税改成「退税制」（2026/11/1 起）</b>：在免税店先付含税价、出示护照登记；<b>出境时在福冈机场先到税关端末刷护照</b>，确认带出境后才退钱。吃的、化妆品在日本用掉就退不到；退款方式与手续费看各店。单店满 ¥5,000（未税）才能办。</li>'+
+    '<li><b>电压</b>：日本 100V、马来西亚 240V。插电的东西<b>一定要看到「100–240V」或「海外対応」</b>才买。</li>'+
+    '</ul></div>';
+  h+='<h3 style="font-size:14px;margin:18px 0 8px;color:var(--ink2)">🗺 照行程的购物点</h3>';
+  SHOPDAY.forEach(function(g){
+    h+='<div class="card" id="shop-d'+g.d+'" style="--c:var('+DAYS[g.d-1].c+')"><div class="area-h" style="font-size:11.5px;color:var(--ink3)">DAY '+g.d+' · '+g.w+'</div>'+
+       '<div class="card-t" style="margin-bottom:2px">'+g.a+'</div>';
+    g.s.forEach(function(x){
+      h+='<div class="sh"><div class="n"><a class="nav" href="'+navUrl(x[1])+'" target="_blank" rel="noopener">'+x[0]+'</a></div>'+
+         '<div class="h">🕐 '+x[2]+'</div><div class="w">'+x[3]+'</div></div>';
+    });
+    h+='<a class="nav" style="font-size:12px;border:0;margin-top:6px;display:inline-block" href="#d'+g.d+'">↑ 回到 DAY '+g.d+' 的行程</a></div>';
+  });
+  h+='<h3 style="font-size:14px;margin:18px 0 8px;color:var(--ink2)">🏷 按类别 · 什么值得在日本买</h3>';
+  SHOPCAT.forEach(function(c){
+    h+='<div class="card"><div class="card-t">'+c.t+'</div><div class="where">📍 '+c.where+'</div><ul class="it">';
+    c.items.forEach(function(x){ h+='<li>'+x[0]+'<span class="px">'+x[1]+'</span></li>'; });
+    h+='</ul></div>';
+  });
+  h+='<div class="tip" style="margin-top:4px">价格是 2026 年的日本一般售价区间，换算用 ¥1,000 ≈ RM26。马来西亚价钱各店差很多，<b>现场用手机查一下 Shopee／Watsons 再决定</b>最准。</div>';
+  document.getElementById('shopBox').innerHTML=h;
 })();
 
 /* ---- 核对 ---- */
